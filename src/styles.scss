@@ -1,1 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+$image: url('../public/hatter.svg');
+
+body {
+  background-image: $image;
+  color: "white";
+}
