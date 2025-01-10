@@ -1,4 +1,8 @@
-$image: url('../public/hatter.svg');
+$image: url('../public/img/hatter.svg');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
   background-image: $image;

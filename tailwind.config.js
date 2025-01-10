@@ -4,11 +4,7 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {
-      backgroundImage: {
-        'main': "url('hatter.svg')",
-      }
-    },
+    extend: {},
   },
   plugins: [],
 }

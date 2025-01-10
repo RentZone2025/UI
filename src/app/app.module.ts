@@ -11,6 +11,8 @@ import { ClubCardComponent } from './club-card/club-card.component';
 import { RentComponent } from './rent/rent.component';
 import { OrderComponent } from './order/order.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AccountComponent } from './account/account.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ClubCardComponent,
     RentComponent,
     OrderComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AccountComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
