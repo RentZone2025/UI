@@ -1,15 +1,11 @@
 name: Deploy Angular to GitHub Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
     branches:
       - main
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions for GITHUB_TOKEN to deploy to GitHub Pages
 permissions:
   contents: write
   pages: write
@@ -28,7 +24,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18' # Specify the Node.js version
+          node-version: '18'
 
       # Step 3: Install dependencies
       - name: Install dependencies
@@ -38,7 +34,11 @@ jobs:
       - name: Build Angular app
         run: npm run build -- --output-path=dist/rent-zone-ui/browser --base-href=/
 
-      # Step 5: Upload build artifacts
+      # Step 5: Disable Jekyll
+      - name: Disable Jekyll
+        run: echo '' > dist/rent-zone-ui/browser/.nojekyll
+
+      # Step 6: Upload build artifacts
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
