@@ -13,6 +13,7 @@ import { OrderComponent } from './order/order.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AccountComponent } from './account/account.component';
 import { NavComponent } from './nav/nav.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NavComponent } from './nav/nav.component';
     OrderComponent,
     NotFoundComponent,
     AccountComponent,
-    NavComponent
+    NavComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

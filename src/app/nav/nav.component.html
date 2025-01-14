@@ -1,9 +1,10 @@
 <div
-    class="max-w-3xl rounded-full h-20 mx-auto mt-2 bg-[#595656] flex gap-4 py-2 px-4 items-center justify-between relative text-white font-medium">
+
+    class="md:max-w-3xl rounded-full h-20 mx-auto mt-2 bg-[#595656] flex gap-4 py-2 px-4 items-center justify-between relative text-white font-medium">
     <div class="w-14 h-14 ml-2 mr-4">
         <img class="w-full h-full object-contain" src="logo.png" alt="">
     </div>
-    <div>
+    <div class="hidden md:block">
         <div class="flex items-center justify-center cursor-pointer p-2 gap-8 w-full">
             <div class="flex items-center justify-center cursor-pointer p-2" (click)="toggleDropdown()">
                 <div>
@@ -75,10 +76,10 @@
             </div>
             <div class="flex gap-8">
                 <div class="p-2 mr-3">
-                    <a routerLink="/services/rent">Kapcsolat</a>
+                    <a routerLink="/contact">Kapcsolat</a>
                 </div>
                 <div class="p-2">
-                    <a routerLink="/services/rent">Tagság</a>
+                    <a routerLink="/club-card">Tagság</a>
                 </div>
                 <div class="p-2">
                     <a routerLink="/services/rent" class="flex items-center justify-center mt-0.5 ml-2">
@@ -91,7 +92,7 @@
         </div>
     </div>
     <div class="p-2">
-        <button class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-bold">
+        <button routerLink="/rent" class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-bold">
             BÉRLÉS
         </button>
     </div>
