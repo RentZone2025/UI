@@ -23,7 +23,7 @@ const routes: Routes = [
     path: "order", component: OrderComponent
   },
   {
-    path: "clubcart", component: ClubCardComponent 
+    path: "club-card", component: ClubCardComponent 
   },
   {
     path: "login", component: LoginComponent 
