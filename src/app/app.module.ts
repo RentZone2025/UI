@@ -14,6 +14,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AccountComponent } from './account/account.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FooterComponent } from './footer/footer.component';
     NotFoundComponent,
     AccountComponent,
     NavComponent,
-    FooterComponent
+    FooterComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
