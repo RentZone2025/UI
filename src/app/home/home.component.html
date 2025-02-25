@@ -1,3 +1,4 @@
+
 <div class="md:conatiner mx-auto px-10 text-white">
 
     <div class="mx-auto px-8 my-12">
@@ -44,7 +45,7 @@
     <div class="mx-auto pt-8 lg:pt-32">
         <div class="flex md:flex-row flex-col gap-6 justify-center">
             
-            <div class="mb-2">
+            <div class="mb-2 animate-pulse">
                 <img src="./psimg.png" alt="">
             </div>
 
@@ -103,7 +104,7 @@
     <div class="mx-auto pt-8 lg:pt-32">
         <div class="flex md:flex-row flex-col gap-6 justify-center">
             
-            <div class="mb-2">
+            <div class="mb-2 animate-pulse">
                 <img src="./psimg.png" alt="">
             </div>
 
@@ -142,7 +143,7 @@
 
     <div class="mx-auto pt-8 lg:pt-32">
         
-        <div class="text-center text-5xl mb-4 font-bold">Játékok</div>
+        <div class="text-center text-5xl mb-2 font-bold">Játékok</div>
         <div class="text-center text-2xl text-base">
             <div>
                 <p>Nálunk nemcsak a PlayStation konzolokat és VR eszközöket bérelheted, hanem játékokat is igényelheted mellé.</p>
@@ -154,7 +155,7 @@
     </div>
 
 
-    <div class="mx-auto pt-8 lg:pt-32">
+    <div class="mx-auto pt-8 my-12 lg:pt-32 lg:my-20">
         <div class="flex md:flex-row flex-col gap-6 justify-center">
 
             <div>
@@ -176,12 +177,37 @@
 
     </div>
 
-
-    
+    <div class="container mx-auto p-4">
+        <input
+          type="text"
+          (ngModel)="searchTerm"
+          (input)="search()"
+          placeholder="Keresés kép neve vagy tag alapján"
+          class="hadow appearance-none border bg-[#EEEEEE] opacity-60 rounded-full w-full py-2 px-4 mt-4 mb-4 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
+        >
       
+        <div class="relative overflow-hidden">
+          <div class="flex transition-transform duration-300 ease-in-out" #carouselContainer>
+            <div *ngFor="let item of filteredItems" class="flex-none w-64 mx-2 my-4 ">
+              <img [src]="item.imageUrl" alt="item.title" class="w-full h-70 object-cover rounded-lg">
+              <h3 class="mt-2 text-center text-lg font-semibold">{{ item.title }}</h3>
+              <div class="flex flex-wrap justify-center mt-2">
+                <span *ngFor="let tag of item.tags" class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">{{ tag }}</span>
+              </div>
+            </div>
+          </div>
+          <button (click)="slidePrevious()" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg" [class.invisible]="currentIndex === 0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button (click)="slideNext()" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg" [class.invisible]="currentIndex === filteredItems.length - 1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
       
-
-    
-
 
 </div>
