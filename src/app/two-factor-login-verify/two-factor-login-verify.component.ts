@@ -2,15 +2,13 @@ import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  selector: 'app-two-factor-login-verify',
+  templateUrl: './two-factor-login-verify.component.html',
+  styleUrl: './two-factor-login-verify.component.scss'
 })
-export class LoginComponent {
+export class TwoFactorLoginVerifyComponent {
 
-  email: string = '';
-  password: string = '';
-
+  two_factor_code: string = '';
   message: any = {
     text: '',
     type: ''
@@ -20,8 +18,8 @@ export class LoginComponent {
     private authService: AuthService
   ) { }
 
-  login() {
-    this.authService.login(this.email, this.password).subscribe({
+  verify() {
+    this.authService.twofactorverify(this.two_factor_code).subscribe({
       next: (response: any) => {
         this.message.text = response.message;
         this.message.type = 'success';

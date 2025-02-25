@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { provideHttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +17,8 @@ import { AccountComponent } from './account/account.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { TwoFactorLoginVerifyComponent } from './two-factor-login-verify/two-factor-login-verify.component';
+import { TwoFactorSetupComponent } from './two-factor-setup/two-factor-setup.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +34,18 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     AccountComponent,
     NavComponent,
     FooterComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    TwoFactorLoginVerifyComponent,
+    TwoFactorSetupComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    provideHttpClient()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

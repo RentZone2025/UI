@@ -8,6 +8,10 @@ import { ClubCardComponent } from './club-card/club-card.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AccountComponent } from './account/account.component';
+import { authGuard } from './guards/auth.guard';
+import { TwoFactorLoginVerifyComponent } from './two-factor-login-verify/two-factor-login-verify.component';
+import { TwoFactorSetupComponent } from './two-factor-setup/two-factor-setup.component';
 
 const routes: Routes = [
   {
@@ -30,7 +34,16 @@ const routes: Routes = [
   },
   {
     path: "register", component: RegisterComponent, 
-  },  
+  },
+  {
+    path: "2fa/verify", component: TwoFactorLoginVerifyComponent, 
+  },
+  {
+    path: "2fa/setup", component: TwoFactorSetupComponent, canActivate: [authGuard]
+  },
+  {
+    path: "account", component: AccountComponent, canActivate: [authGuard]
+  },
   {
     path: "", redirectTo: "home", pathMatch: "full"
   },
