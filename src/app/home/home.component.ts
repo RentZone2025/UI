@@ -1,23 +1,11 @@
 import { Component,ViewChild,ElementRef, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+
 
 interface CarouselItem { 
   imageUrl: string;
   title: string;
   tags: string[];
 }
-
-@NgModule ({
-  imports: [
-    FormsModule
-   ],
-
-})
-
-export class AppModule {}
-
-
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -42,7 +30,10 @@ export class HomeComponent {
   
   filteredItems: CarouselItem[] = this.items; currentIndex = 0; searchTerm = ''; 
   
-  search() { this.currentIndex = 0; this.filteredItems = this.items.filter(item => item.title.toLowerCase().includes(this.searchTerm.toLowerCase()) || item.tags.some(tag => tag.toLowerCase().includes(this.searchTerm.toLowerCase())) ); this.updateCarouselPosition(); }
+  search() { this.currentIndex = 0; 
+    this.filteredItems = this.items.filter(item => item.title.toLowerCase().includes(this.searchTerm.toLowerCase()) 
+    || item.tags.some(tag => tag.toLowerCase().includes(this.searchTerm.toLowerCase())) );
+     this.updateCarouselPosition(); }
 
   slideNext() {
     if (this.currentIndex < this.items.length - 1) {
