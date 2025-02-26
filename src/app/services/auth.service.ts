@@ -97,6 +97,24 @@ export class AuthService {
     );
   }
 
+  forgotpassword(email: string): Observable<any> {
+    return this.http.post(`${this.API_URL}/forgot-password`, { email }).pipe(
+      map((response: any) => response),
+      tap(response => {
+        //this.router.navigate(['/login']);
+      })
+    );
+  }
+
+  resetpassword(password: string, password_confirmation: string, token: string, id: string): Observable<any> {
+    return this.http.post(`${this.API_URL}/reset-password`, { password, password_confirmation, token, id }).pipe(
+      map((response: any) => response),
+      tap(response => {
+        //this.router.navigate(['/login']);
+      })
+    );
+  }
+
   setToken(token: string) {
     localStorage.setItem('token', token);
   }

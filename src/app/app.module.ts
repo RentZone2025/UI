@@ -19,6 +19,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { TwoFactorLoginVerifyComponent } from './two-factor-login-verify/two-factor-login-verify.component';
 import { TwoFactorSetupComponent } from './two-factor-setup/two-factor-setup.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { TwoFactorSetupComponent } from './two-factor-setup/two-factor-setup.com
     FooterComponent,
     ForgotPasswordComponent,
     TwoFactorLoginVerifyComponent,
-    TwoFactorSetupComponent
+    TwoFactorSetupComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
