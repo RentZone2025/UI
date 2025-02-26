@@ -1,109 +1,166 @@
 <div class="md:max-w-3xl rounded-xl mx-auto mt-2 bg-[#595656] px-8 py-4">
+  <div class="text-white mx-auto mb-12 text-center text-xl">
+    Személyes adatok
+  </div>
 
-    <div class="text-white mx-auto mb-12 text-center text-xl">Személyes adatok</div>
+  <div>
+    <div class="flex flex-row gap-4 items-center justify-center">
+      <div class="mb-4 w-full">
+        <label class="block text-white text-sm font-bold mb-2" for="username">
+          Vezetéknév
+        </label>
+        <input
+          class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
+          [(ngModel)]="user.lastname"
+          type="text"
+          placeholder="Vezetéknév"
+        />
+      </div>
 
-    <div class="mb-12">
-
-        <div class="flex flex-row gap-4 items-center justify-center">
-            <div class="mb-4 w-full">
-                <label class="block text-white text-sm font-bold mb-2" for="username">
-                    Vezetéknév
-                </label>
-                <input
-                    class="shadow appearance-none border bg-white  rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
-                    type="text" placeholder="Vezetéknév">
-            </div>
-
-            <div class="mb-4 w-full">
-                <label class="block text-white text-sm font-bold mb-2" for="username">
-                    Keresztnév
-                </label>
-                <input
-                    class="shadow appearance-none border bg-white  rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
-                    type="text" placeholder="Keresztnév">
-            </div>
-        </div>
-
-        <div class="flex flex-row gap-4 items-center justify-center">
-            <div class="mb-4 w-full">
-                <label class="block text-white text-sm font-bold mb-2" for="username">
-                    Telefonszám
-                </label>
-                <input
-                    class="shadow appearance-none border bg-white  rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
-                    type="phone" placeholder="Telefonszám">
-            </div>
-
-            <div class="mb-4 w-full">
-                <label class="block text-white text-sm font-bold mb-2" for="username">
-                    Email cím
-                </label>
-                <input
-                    class="shadow appearance-none border bg-white  rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
-                    type="email" placeholder="Email cím">
-            </div>
-        </div>
-
+      <div class="mb-4 w-full">
+        <label class="block text-white text-sm font-bold mb-2" for="username">
+          Keresztnév
+        </label>
+        <input
+          class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
+          [(ngModel)]="user.firstname"
+          type="text"
+          placeholder="Keresztnév"
+        />
+      </div>
     </div>
 
-    <div class="mb-12">
+    <div class="flex flex-row gap-4 items-center justify-center">
+      <div class="mb-4 w-full">
+        <label class="block text-white text-sm font-bold mb-2" for="username">
+          Telefonszám
+        </label>
+        <input
+          class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
+          [(ngModel)]="user.phone_number"
+          type="phone"
+          placeholder="Telefonszám"
+        />
+      </div>
 
-        <div class="flex flex-row gap-4 items-start justify-start w-1/2 pr-2">
-            <div class="mb-4 w-full">
-                <label class="block text-white text-sm font-bold mb-2" for="username">
-                    Régi jelzó
-                </label>
-                <input
-                    class="shadow appearance-none border bg-white  rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
-                    type="text" placeholder="Régi jelszó">
-            </div>
-        </div>
+      <div class="mb-4 w-full">
+        <label class="block text-white text-sm font-bold mb-2" for="username">
+          Email cím
+        </label>
+        <input
+          class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
+          [(ngModel)]="user.email"
+          type="email"
+          placeholder="Email cím"
+        />
+      </div>
+    </div>
+  </div>
 
-        <div class="flex flex-row gap-4 items-center justify-center">
-            <div class="mb-4 w-full">
-                <label class="block text-white text-sm font-bold mb-2" for="username">
-                    Új jelszó
-                </label>
-                <input
-                    class="shadow appearance-none border bg-white  rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
-                    type="password" placeholder="Új jelszó">
-            </div>
+  <div class="mb-12 flex justify-end">
 
-            <div class="mb-4 w-full">
-                <label class="block text-white text-sm font-bold mb-2" for="username">
-                    Új jelszó megerősítése
-                </label>
-                <input
-                    class="shadow appearance-none border bg-white  rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
-                    type="password" placeholder="Új jelszó megerősítése">
-            </div>
-        </div>
+    <button
+    (click)="saveUserData()"
+    class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold"
+  >
+    MENTÉS
+  </button>
 
+  </div>
+
+  <div>
+    <div class="flex flex-row gap-4 items-start justify-start w-1/2 pr-2">
+      <div class="mb-4 w-full">
+        <label class="block text-white text-sm font-bold mb-2" for="username">
+          Régi jelzó
+        </label>
+        <input
+          class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
+          [(ngModel)]="passwords.old_password"
+          type="text"
+          placeholder="Régi jelszó"
+        />
+      </div>
     </div>
 
-    <div class="text-white mx-auto mb-12 text-center text-xl">Kétlépcsős hitelesítés</div>
+    <div class="flex flex-row gap-4 items-center justify-center">
+      <div class="mb-4 w-full">
+        <label class="block text-white text-sm font-bold mb-2" for="username">
+          Új jelszó
+        </label>
+        <input
+          class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
+          [(ngModel)]="passwords.password"
+          type="password"
+          placeholder="Új jelszó"
+        />
+      </div>
 
-    <div class="mb-12 flex items-center justify-center">
-        <div class="text-white text-left flex flex-row gap-4 items-center justify-start">
-            <ng-template [ngIf]="two_factor_auth_enabled">
-                <span
-                    class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Bekapcsolva</span>
-            </ng-template>
-            <ng-template [ngIf]="!two_factor_auth_enabled">
-                <span
-                    class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">Kikapcsolva</span>
-            </ng-template>
-            <button *ngIf="!two_factor_auth_enabled" routerLink="/2fa/setup"
-                class="bg-[#EEEEEE] opacity-60 text-[#0A6222] text-xs rounded-full me-2 px-2.5 py-0.5 font-extrabold">Bekapcsolás</button>
-            <button *ngIf="two_factor_auth_enabled" (click)="TwoFactorAuthDeactivate()"
-                class="bg-[#EEEEEE] opacity-60 text-[#61271F] text-xs rounded-full me-2 px-2.5 py-0.5 font-extrabold">Kikapcsolás</button>
-        </div>
+      <div class="mb-4 w-full">
+        <label class="block text-white text-sm font-bold mb-2" for="username">
+          Új jelszó megerősítése
+        </label>
+        <input
+          class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
+          [(ngModel)]="passwords.password_confirmation"
+          type="password"
+          placeholder="Új jelszó megerősítése"
+        />
+      </div>
     </div>
+  </div>
 
-    <div class="text-white mx-auto mb-12 text-center text-xl">Tagság</div>
+  <div class="mb-12 flex justify-end">
 
-    <div class="text-white mx-auto mb-12 text-center text-xl">Szállítási cím</div>
+    <button
+    (click)="changePassword()"
+    class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold"
+  >
+    MENTÉS
+  </button>
 
-    <div class="text-white mx-auto mb-12 text-center text-xl">Számlázási cím</div>
+  </div>
 
+  <div class="text-white mx-auto mb-12 text-center text-xl">
+    Kétlépcsős hitelesítés
+  </div>
+
+  <div class="mb-12 flex items-center justify-center">
+    <div
+      class="text-white text-left flex flex-row gap-4 items-center justify-start"
+    >
+      <ng-template [ngIf]="two_factor_auth_enabled">
+        <span
+          class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300"
+          >Bekapcsolva</span
+        >
+      </ng-template>
+      <ng-template [ngIf]="!two_factor_auth_enabled">
+        <span
+          class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300"
+          >Kikapcsolva</span
+        >
+      </ng-template>
+      <button
+        *ngIf="!two_factor_auth_enabled"
+        routerLink="/2fa/setup"
+        class="bg-[#EEEEEE] opacity-60 text-[#0A6222] text-xs rounded-full me-2 px-2.5 py-0.5 font-extrabold"
+      >
+        Bekapcsolás
+      </button>
+      <button
+        *ngIf="two_factor_auth_enabled"
+        (click)="TwoFactorAuthDeactivate()"
+        class="bg-[#EEEEEE] opacity-60 text-[#61271F] text-xs rounded-full me-2 px-2.5 py-0.5 font-extrabold"
+      >
+        Kikapcsolás
+      </button>
+    </div>
+  </div>
+
+  <div class="text-white mx-auto mb-12 text-center text-xl">Tagság</div>
+
+  <div class="text-white mx-auto mb-12 text-center text-xl">Szállítási cím</div>
+
+  <div class="text-white mx-auto mb-12 text-center text-xl">Számlázási cím</div>
 </div>

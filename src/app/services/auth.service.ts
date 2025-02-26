@@ -115,6 +115,23 @@ export class AuthService {
     );
   }
 
+  updateUser(user: any){
+    return this.http.put(`${this.API_URL}/users/${user.id}`, user, {
+      headers: {
+        'Authorization': `Bearer ${this.getToken()}`
+      }
+    })
+  }
+
+  changePassword(passwords: any){
+    return this.http.post(`${this.API_URL}/users/change-password`, passwords, {
+      headers: {
+        'Authorization': `Bearer ${this.getToken()}`
+      }
+    })
+  }
+
+
   setToken(token: string) {
     localStorage.setItem('token', token);
   }
