@@ -21,6 +21,12 @@ export class AccountComponent implements OnInit {
     password_confirmation: ""
   }
 
+  message: any = {
+    text: "",
+    type: "",
+    desc: ""
+  }
+
   constructor(
     private authService: AuthService
   ) { }
@@ -39,6 +45,22 @@ export class AccountComponent implements OnInit {
     })
   }
 
+  addMessage(text: string, type: string, desc: string){
+    this.message = {
+      text: text,
+      type: type,
+      desc: desc
+    }
+  }
+
+  removeMessage(){
+    this.message = {
+      text: "",
+      type: "",
+      desc: ""
+    }
+  }
+
   TwoFactorAuthDeactivate() {
     this.authService.twofactordeactivate().subscribe({
       next: (response: any) => {
@@ -51,6 +73,7 @@ export class AccountComponent implements OnInit {
   }
 
   saveUserData(){
+    this.removeMessage()
     this.user.fullname = this.user.firstname + " " + this.user.lastname
     let user = { ...this.user }
     delete user.firstname;
@@ -61,12 +84,25 @@ export class AccountComponent implements OnInit {
         this.user = user
         this.user.firstname = this.user.fullname.split(" ")[0]
         this.user.lastname = this.user.fullname.split(" ")[1]
+        this.addMessage("Sikeres adat módosítás", "success", "save_user")
+      },
+      error: (error: any) => {
+        this.addMessage(error.error.message, "error", "save_user")
       }
     })
   }
 
   changePassword(){
-    this.authService.changePassword(this.passwords).subscribe()
+    this.removeMessage()
+    this.authService.changePassword(this.passwords).subscribe({
+      next: (user) => {
+        console.log(user)
+        this.addMessage("Sikeres jelszó módosítás!", "success", "change_password")
+      },
+      error: (error: any) => {
+        this.addMessage(error.error.message, "error", "change_password")
+      }
+    })
   }
 
 }
