@@ -57,9 +57,9 @@
     </div>
   </div>
 
-  <div 
-  class="flex justify-end"
-  [ngClass]="{
+  <div
+    class="flex justify-end"
+    [ngClass]="{
     'mb-12': message.desc != 'save_user',
     'mb-4': message.desc == 'save_user',
   }"
@@ -75,16 +75,16 @@
   <div
     class="border px-4 py-3 rounded relative mb-12"
     [ngClass]="{
-      'hidden': message.desc != 'save_user',
-      'block': message.desc == 'save_user',
+      hidden: message.desc != 'save_user',
+      block: message.desc == 'save_user',
       'bg-red-100 border-red-400 text-red-700': message.type === 'error',
       'bg-green-100 border-green-400 text-green-700': message.type === 'success'
     }"
     role="alert"
   >
     <strong class="font-bold">
-      {{ message.type === "error" ? "HIBA" : "SIKERES MÓDOSÍTÁS" }}
-    </strong><br>
+      {{ message.type === "error" ? "HIBA" : "SIKERES MÓDOSÍTÁS" }} </strong
+    ><br />
     <span class="block sm:inline">
       {{ message.text }}
     </span>
@@ -132,9 +132,9 @@
     </div>
   </div>
 
-  <div 
-  class="flex justify-end"
-  [ngClass]="{
+  <div
+    class="flex justify-end"
+    [ngClass]="{
     'mb-12': message.desc != 'change_password',
     'mb-4': message.desc == 'change_password',
   }"
@@ -158,8 +158,8 @@
     role="alert"
   >
     <strong class="font-bold">
-      {{ message.type === "error" ? "HIBA" : "SIKERES MÓDOSÍTÁS" }}
-    </strong><br>
+      {{ message.type === "error" ? "HIBA" : "SIKERES MÓDOSÍTÁS" }} </strong
+    ><br />
     <span class="block sm:inline">
       {{ message.text }}
     </span>
@@ -206,5 +206,196 @@
 
   <div class="text-white mx-auto mb-12 text-center text-xl">Szállítási cím</div>
 
+  <div>
+    <div class="flex flex-row gap-4 items-center justify-center">
+      <div class="mb-4 w-full">
+        <label class="block text-white text-sm font-bold mb-2" for="username">
+          Város
+        </label>
+        <input
+          class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
+          [(ngModel)]="shipping.city"
+          (ngModelChange)="isMatch ? changeShippingData() : undefined"
+          type="text"
+          placeholder="Város"
+        />
+      </div>
+
+      <div class="mb-4 w-full">
+        <label class="block text-white text-sm font-bold mb-2" for="username">
+          Irányító szám
+        </label>
+        <input
+          class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
+          [(ngModel)]="shipping.postal_code"
+          (ngModelChange)="isMatch ? changeShippingData() : undefined"
+          type="text"
+          placeholder="Irányító szám"
+        />
+      </div>
+    </div>
+
+    <div class="flex flex-row gap-4 items-center justify-center">
+      <div class="mb-4 w-full">
+        <label class="block text-white text-sm font-bold mb-2" for="username">
+          Cím
+        </label>
+        <input
+          class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
+          [(ngModel)]="shipping.address"
+          (ngModelChange)="isMatch ? changeShippingData() : undefined"
+          type="text"
+          placeholder="Cím"
+        />
+      </div>
+
+      <div class="mb-4 w-full">
+        <label class="block text-white text-sm font-bold mb-2" for="username">
+          Vármegye
+        </label>
+        <input
+          class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
+          [(ngModel)]="shipping.country"
+          (ngModelChange)="isMatch ? changeShippingData() : undefined"
+          type="text"
+          placeholder="Vármegye"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="flex justify-end"
+    [ngClass]="{
+    'mb-12': message.desc != 'change_shipping',
+    'mb-4': message.desc == 'change_shipping',
+  }"
+  >
+
+  <div class="flex items-center gap-2 mr-2">
+    <label for="hs-default-checkbox" class="text-sm text-white ms-3 dark:text-neutral-400">
+      Megeggyezik a szállítási cím és a számlázási cím
+    </label>
+    <input [(ngModel)]="isMatch" (ngModelChange)="isMatch ? changeShippingData() : undefined" type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-default-checkbox">
+  </div>
+
+    <button
+      (click)="changeShipping()"
+      class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold"
+    >
+      MENTÉS
+    </button>
+  </div>
+
+  <div
+    class="border px-4 py-3 rounded relative mb-12"
+    [ngClass]="{
+      hidden: message.desc != 'change_shipping',
+      block: message.desc == 'change_shipping',
+      'bg-red-100 border-red-400 text-red-700': message.type === 'error',
+      'bg-green-100 border-green-400 text-green-700': message.type === 'success'
+    }"
+    role="alert"
+  >
+    <strong class="font-bold">
+      {{ message.type === "error" ? "HIBA" : "SIKERES MÓDOSÍTÁS" }} </strong
+    ><br />
+    <span class="block sm:inline">
+      {{ message.text }}
+    </span>
+  </div>
+
   <div class="text-white mx-auto mb-12 text-center text-xl">Számlázási cím</div>
+
+  <div>
+    <div class="flex flex-row gap-4 items-center justify-center">
+      <div class="mb-4 w-full">
+        <label class="block text-white text-sm font-bold mb-2" for="username">
+          Város
+        </label>
+        <input
+          [disabled]="isMatch"
+          class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
+          [(ngModel)]="billing.city"
+          type="text"
+          placeholder="Város"
+        />
+      </div>
+
+      <div class="mb-4 w-full">
+        <label class="block text-white text-sm font-bold mb-2" for="username">
+          Irányító szám
+        </label>
+        <input
+          [disabled]="isMatch"
+          class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
+          [(ngModel)]="billing.postal_code"
+          type="text"
+          placeholder="Irányító szám"
+        />
+      </div>
+    </div>
+
+    <div class="flex flex-row gap-4 items-center justify-center">
+      <div class="mb-4 w-full">
+        <label class="block text-white text-sm font-bold mb-2" for="username">
+          Cím
+        </label>
+        <input
+          class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
+          [disabled]="isMatch"
+          [(ngModel)]="billing.address"
+          type="text"
+          placeholder="Cím"
+        />
+      </div>
+
+      <div class="mb-4 w-full">
+        <label class="block text-white text-sm font-bold mb-2" for="username">
+          Vármegye
+        </label>
+        <input
+          class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
+          [disabled]="isMatch"
+          [(ngModel)]="billing.country"
+          type="text"
+          placeholder="Vármegye"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="flex justify-end"
+    [ngClass]="{
+    'mb-12': message.desc != 'change_billing',
+    'mb-4': message.desc == 'change_billing',
+  }"
+  >
+    <button
+      (click)="changeBilling()"
+      [disabled]="isMatch"
+      class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold disabled:bg-gray-300"
+    >
+      MENTÉS
+    </button>
+  </div>
+
+  <div
+    class="border px-4 py-3 rounded relative mb-12"
+    [ngClass]="{
+      hidden: message.desc != 'change_billing',
+      block: message.desc == 'change_billing',
+      'bg-red-100 border-red-400 text-red-700': message.type === 'error',
+      'bg-green-100 border-green-400 text-green-700': message.type === 'success'
+    }"
+    role="alert"
+  >
+    <strong class="font-bold">
+      {{ message.type === "error" ? "HIBA" : "SIKERES MÓDOSÍTÁS" }} </strong
+    ><br />
+    <span class="block sm:inline">
+      {{ message.text }}
+    </span>
+  </div>
 </div>
