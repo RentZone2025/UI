@@ -1,6 +1,7 @@
 import { Component,ViewChild,ElementRef, NgModule } from '@angular/core';
 
 
+
 interface CarouselItem { 
   imageUrl: string;
   title: string;
@@ -12,6 +13,8 @@ interface CarouselItem {
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+
+  emailText = 'info@rentzone.hu';
 
   @ViewChild('carouselContainer') carouselContainer!: ElementRef;
 
