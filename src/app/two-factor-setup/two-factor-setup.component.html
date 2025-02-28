@@ -3,7 +3,7 @@
 
     <div class="text-white mx-auto mb-12 text-center text-xl">Kétlépcsős azonosítás beállitása</div>
 
-    <ng-template [ngIf]="!enabled">
+    <ng-template [ngIf]="enabled === false">
 
         <div class="flex flex-row gap-4">
 
@@ -44,7 +44,7 @@
 
     </ng-template>
 
-    <ng-template [ngIf]="enabled">
+    <ng-template [ngIf]="enabled == true">
 
         <div class="text-white text-center mb-6">
             A kétlépcsős azonosítás beállítása sikeresen megtörtént.

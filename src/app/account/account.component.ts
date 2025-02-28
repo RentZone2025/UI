@@ -23,7 +23,7 @@ interface Billing {
 })
 export class AccountComponent implements OnInit {
 
-  two_factor_auth_enabled: boolean = false;
+  two_factor_auth_enabled: any = null;
   user: any = {
     lastname: "",
     firstname: ""
@@ -161,6 +161,7 @@ export class AccountComponent implements OnInit {
   }
 
   changeShipping(){
+    this.removeMessage()
     this.accountService.changeShipping(this.shipping).subscribe({
       next: (shipping: any) => {
         this.shipping = shipping.shipping
@@ -176,6 +177,7 @@ export class AccountComponent implements OnInit {
   }
 
   changeBilling(){
+    this.isMatch ? undefined : this.removeMessage()
     this.accountService.changeBilling(this.billing).subscribe({
       next: (billing: any) => {
         console.log(billing)
