@@ -13,6 +13,7 @@ import { TwoFactorLoginVerifyComponent } from './two-factor-login-verify/two-fac
 import { TwoFactorSetupComponent } from './two-factor-setup/two-factor-setup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { MyOrderComponent } from './my-order/my-order.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,9 @@ const routes: Routes = [
   },
   {
     path: "account", component: AccountComponent, canActivate: [authGuard]
+  },
+  {
+    path: "my-order", component: MyOrderComponent, canActivate: [authGuard]
   },
   {
     path: "", redirectTo: "home", pathMatch: "full"
