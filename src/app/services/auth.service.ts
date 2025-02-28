@@ -91,7 +91,8 @@ export class AuthService {
   register(fullname: string, username: string, email: string, password: string, password_confirmation: string): Observable<any> {
     return this.http.post<{ user: User }>(`${this.API_URL}/register`, { fullname, username, email, password, password_confirmation }).pipe(
       map((response:any) => response),
-      tap(user => {
+      tap(response => {
+        this.setToken(response.access_token);
         this.router.navigate(['/account']);
       })
     );
@@ -114,23 +115,6 @@ export class AuthService {
       })
     );
   }
-
-  updateUser(user: any){
-    return this.http.put(`${this.API_URL}/users/${user.id}`, user, {
-      headers: {
-        'Authorization': `Bearer ${this.getToken()}`
-      }
-    })
-  }
-
-  changePassword(passwords: any){
-    return this.http.post(`${this.API_URL}/users/change-password`, passwords, {
-      headers: {
-        'Authorization': `Bearer ${this.getToken()}`
-      }
-    })
-  }
-
 
   setToken(token: string) {
     localStorage.setItem('token', token);

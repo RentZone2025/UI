@@ -13,7 +13,7 @@ export class TwoFactorSetupComponent implements OnInit {
   two_factor_setup: any;
   two_factor_code: string = '';
 
-  enabled: boolean = false;
+  enabled: any = null;
 
   constructor(
     private authService: AuthService,
@@ -24,8 +24,8 @@ export class TwoFactorSetupComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getCurrentUser().subscribe({
       next: (response: any) => {
-        this.enabled = response.two_factor_secret != null;
-        if(!this.enabled){0
+        this.enabled = response.user.two_factor_secret != null;
+        if(!this.enabled){
           this.enable();
         }
       },
