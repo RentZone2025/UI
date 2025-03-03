@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { getToken } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class AccountService {
   updateUser(user: any){
     return this.http.put(`${this.API_URL}/users/${user.id}`, user, {
       headers: {
-        'Authorization': `Bearer ${this.getToken()}`
+        'Authorization': `Bearer ${getToken()}`
       }
     })
   }
@@ -26,29 +27,28 @@ export class AccountService {
   changePassword(passwords: any){
     return this.http.post(`${this.API_URL}/users/change-password`, passwords, {
       headers: {
-        'Authorization': `Bearer ${this.getToken()}`
+        'Authorization': `Bearer ${getToken()}`
       }
     })
   }
 
   changeShipping(shipping: any){
+    console.log(shipping)
+    shipping.postal_code = shipping.postal_code.toString()
     return this.http.post(`${this.API_URL}/users/change-shipping`, shipping, {
       headers: {
-        'Authorization': `Bearer ${this.getToken()}`
+        'Authorization': `Bearer ${getToken()}`
       }
     })
   }
 
   changeBilling(billing: any){
+    console.log(billing)
+    billing.postal_code = billing.postal_code.toString()
     return this.http.post(`${this.API_URL}/users/change-billing`, billing, {
       headers: {
-        'Authorization': `Bearer ${this.getToken()}`
+        'Authorization': `Bearer ${getToken()}`
       }
     })
   }
-
-  getToken(): string | null {
-    return localStorage.getItem('token');
-  }
-
 }

@@ -9,7 +9,11 @@
 
   <div class="text-white mx-auto mb-12 text-center text-xl">Rendeléseim</div>
 
-  <table class="mb-12">
+  <div class="text-white text-center mb-12" *ngIf="rents?.length == 0">
+    Ohh 😢 Sajnos nem rendeltél még tőlünk.
+  </div>
+
+  <table class="mb-12" *ngIf="rents?.length > 0">
     <thead class="text-white text-xs">
       <tr class="border-b border-gray-200">
         <th scope="col" class="px-4 py-3">Rendelés azonosító</th>
@@ -22,13 +26,13 @@
       </tr>
     </thead>
     <tbody class="text-white text-sm">
-      <tr class="border-b border-gray-200">
-        <td class="px-4 py-3">Hétvégi#0012</td>
-        <td class="px-4 py-3">2025.01.01</td>
-        <td class="px-4 py-3">Szállítás</td>
-        <td class="px-4 py-3">30000 Ft</td>
-        <td class="px-4 py-3">2025.01.02</td>
-        <td class="px-4 py-3">2025.01.05</td>
+      <tr class="border-b border-gray-200" *ngFor="let rent of rents">
+        <td class="px-4 py-3">{{ rent.id }}</td>
+        <td class="px-4 py-3">{{ format(rent.created_at) }}</td>
+        <td class="px-4 py-3">{{ rent.status }}</td>
+        <td class="px-4 py-3">{{ rent.sum_price }}</td>
+        <td class="px-4 py-3">{{ format(rent.order_date) }}</td>
+        <td class="px-4 py-3">{{ format(rent.order_date) }}</td>
         <td class="px-4 py-3">
           <button
             class="bg-[#EEEEEE] opacity-60 text-xs text-[#0A6222] rounded-full px-2 py-1 font-extrabold"
@@ -42,7 +46,11 @@
 
   <div class="text-white mx-auto mb-12 text-center text-xl">Archivált rendeléseim</div>
 
-  <table class="mb-12">
+  <div class="text-white text-center mb-12" *ngIf="archivedRents?.length == 0">
+    De jóó! Még nincs archivált rendelésed!
+  </div>
+
+  <table class="mb-12" *ngIf="archivedRents?.length > 0">
     <thead class="text-white text-xs">
       <tr class="border-b border-gray-200">
         <th scope="col" class="px-4 py-3">Rendelés azonosító</th>
@@ -55,13 +63,13 @@
       </tr>
     </thead>
     <tbody class="text-white text-sm">
-      <tr class="border-b border-gray-200">
-        <td class="px-4 py-3">Hétvégi#0012</td>
-        <td class="px-4 py-3">2025.01.01</td>
-        <td class="px-4 py-3">Szállítás</td>
-        <td class="px-4 py-3">30000 Ft</td>
-        <td class="px-4 py-3">2025.01.02</td>
-        <td class="px-4 py-3">2025.01.05</td>
+      <tr class="border-b border-gray-200" *ngFor="let rent of archivedRents">
+        <td class="px-4 py-3">{{ rent.id }}</td>
+        <td class="px-4 py-3">{{ format(rent.created_at) }}</td>
+        <td class="px-4 py-3">{{ rent.status }}</td>
+        <td class="px-4 py-3">{{ rent.sum_price }}</td>
+        <td class="px-4 py-3">{{ format(rent.order_date) }}</td>
+        <td class="px-4 py-3">{{ format(rent.order_date) }}</td>
         <td class="px-4 py-3">
           <button
             class="bg-[#EEEEEE] opacity-60 text-xs text-[#0A6222] rounded-full px-2 py-1 font-extrabold"

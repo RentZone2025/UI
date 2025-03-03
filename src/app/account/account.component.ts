@@ -5,13 +5,13 @@ import { not } from 'rxjs/internal/util/not';
 
 interface Shipping {
   city: string,
-  postal_code: number | null,
+  postal_code: string,
   address: string,
   country: string
 }
 interface Billing {
   city: string,
-  postal_code: number | null,
+  postal_code: string,
   address: string,
   country: string
 }
@@ -30,13 +30,13 @@ export class AccountComponent implements OnInit {
   };
   shipping: Shipping = {
     city: "",
-    postal_code: null,
+    postal_code: "",
     address: "",
     country: ""
   };
   billing: Billing = {
     city: "",
-    postal_code: null,
+    postal_code: "",
     address: "",
     country: ""
   };
@@ -68,7 +68,7 @@ export class AccountComponent implements OnInit {
         this.user.lastname = this.user.fullname.split(" ")[1]
         this.shipping = user.shipping || this.shipping;
         this.billing = user.billing || this.billing;
-        this.isMatch = this.shallowEqual(this.billing, this.shipping)
+        this.isMatch = Object.keys(this.shipping).length != 0 && Object.keys(this.billing).length != 0 && this.shallowEqual(this.billing, this.shipping)
       },
       error: (error: any) => {
         console.log(error);
@@ -162,6 +162,7 @@ export class AccountComponent implements OnInit {
 
   changeShipping(){
     this.removeMessage()
+    console.log(this.shipping)
     this.accountService.changeShipping(this.shipping).subscribe({
       next: (shipping: any) => {
         this.shipping = shipping.shipping
