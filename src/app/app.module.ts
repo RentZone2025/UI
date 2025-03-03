@@ -21,6 +21,10 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { TwoFactorLoginVerifyComponent } from './two-factor-login-verify/two-factor-login-verify.component';
 import { TwoFactorSetupComponent } from './two-factor-setup/two-factor-setup.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { RentServicesComponent } from './rent-services/rent-services.component';
+import { RentDeliveryComponent } from './rent-delivery/rent-delivery.component';
+import { RentPaymentComponent } from './rent-payment/rent-payment.component';
+import { RentConfirmComponent } from './rent-confirm/rent-confirm.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,11 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     ForgotPasswordComponent,
     TwoFactorLoginVerifyComponent,
     TwoFactorSetupComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    RentServicesComponent,
+    RentDeliveryComponent,
+    RentPaymentComponent,
+    RentConfirmComponent
   ],
   imports: [
     BrowserModule,

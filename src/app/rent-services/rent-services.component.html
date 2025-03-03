@@ -1,0 +1,327 @@
+<div class="md:conatiner mx-auto px-60 text-white ">
+    <div class="mx-auto px-8 my-12">
+        
+      <div class="flex md:flex-row flex-col gap-4 justify-center text-center ">
+          <div class="flex md:flex-row">
+              <div class="font-bold text-black text-3xl bg-[#0A6222] p-6 rounded-full ">
+                  <p>1</p>
+              </div>
+          </div>
+          <div class="mt-8 text-xl mr-16 " >
+            <p>Szolgáltatás választás</p>
+          </div>
+          <div class="flex md:flex-row">
+            <div class="font-bold text-black text-3xl bg-[#EEEEEE] p-6 rounded-full">
+               <p>2</p>
+           </div>
+         </div>
+         <div class="mt-8 text-xl mr-16" >
+            <p>Szállítási adatok</p>
+         </div>
+         <div class="flex md:flex-row">
+            <div class="font-bold text-black text-3xl bg-[#EEEEEE] p-6 rounded-full">
+               <p>3</p>
+           </div>
+         </div>
+         <div class="text-xs mt-8 lg:text-xl mr-16" >
+            <p>Fizetés</p>
+         </div>
+         <div class="flex md:flex-row">
+            <div class=" font-bold text-black text-3xl bg-[#EEEEEE] p-6 rounded-full">
+               <p>4</p>
+           </div>
+         </div>
+         <div class="text-xs lg:mt-8 lg:text-xl ">
+            <p>Visszaigazolás</p>
+         </div>
+      </div>
+   </div>
+
+   <div class=" flex flex-col bg-[#595656] mb-8 text-white py-6 px-6 md:px-18 rounded-[50px]">
+      <div class="flex flex-col">
+         <div class="flex justify-center mt-4">
+            <button routerLink="/club-card"
+                class="bg-[#EEEEEE] opacity-80 text-[#0A6222] rounded-full px-8 py-4 font-extrabold">
+                TAGSÁG
+            </button>
+        </div>
+        <div class="flex justify-center ">
+            <div class="pr-8 pt-16 text-3xl">
+               <p>Melyik csomagot szeretnéd:</p>
+            </div>
+            <div>
+               <div class="pt-16 w-64">
+                  <select 
+                    [(ngModel)]="selectedPackage" 
+                    (change)="onPackageChange()"
+                    class="appearance-none w-full bg-white px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline cursor-pointer text-black"
+                     >
+                     <option value="" disabled selected>Válassz csomagot</option>
+                     <option value="weekend">Hétvégi csomag</option>
+                     <option value="daily">Napi csomag</option>
+                     <option value="monthly">Hónapos csomag</option>
+                     <option value="weekly">1 hét csomag</option>
+                     <option value="biweekly">2 hét csomag</option>
+                  </select>
+                  <div class=" absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 ">
+                    <svg class="fill-current cursor-pointer h-4 w-4"viewBox="0 0 20 20">
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                    </svg>
+                  </div>
+                </div>
+                
+               
+            </div>
+        </div>
+        <div class=" flex text-center justify-center">
+            <div class="pt-8 pr-16 text-3xl">
+               <p>Válaszd ki a dátumot:</p>
+            </div>
+            <div class="pt-8">
+               
+               <input
+                class="shadow appearance-none border bg-white  rounded py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
+                [(ngModel)]="date" type="date" placeholder="Dátum">
+            </div>
+
+         </div>
+
+
+         <div class="flex justify-center ">
+            <div class="pr-8 pt-8 text-3xl">
+               <p>Milyen eszközt/eszközöket szeretnél:</p>
+            </div>
+            <div>
+               <div class="pt-8 w-64">
+                  <select 
+                    [(ngModel)]="selectedResort" 
+                    (change)="onPackageChange2()"
+                    class="appearance-none w-full bg-white px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline cursor-pointer text-black"
+                     >
+                     <option value="" disabled selected>Válassz eszközt/eszközöket</option>
+                     <option value="weekend">Play Station 5</option>
+                     <option value="daily">VR Headset</option>
+                     <option value="monthly">Play Station5 + VR Headset</option>
+                  </select>
+                  <div class=" absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 ">
+                    <svg class="fill-current cursor-pointer h-4 w-4"viewBox="0 0 20 20">
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                    </svg>
+                  </div>
+                </div>
+                
+               
+            </div>
+        </div> 
+        <div class="flex text-center justify-center">
+         <div class="pt-8 pr-16 ">
+            <p class="text-3xl">Szeretnél mellé extra kontrollert ? </p>
+            <p class="opacity-40">A csomag alapból tartalmaz egy darab kontrollert.</p>
+         </div>
+         <div class="pt-8">
+            
+            <input
+             class="shadow appearance-none border bg-white  rounded py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
+             [(ngModel)]="controlcount" type="number" min="0" max="3" placeholder="Darabszám">
+         </div>
+
+        </div>  
+
+
+
+
+         <div class="flex text-center">
+            <div class="text-2xl pt-8 px-32 ">
+               <p>
+                  Kérlek írd be  a játék nevét!
+                  Csomagodhoz 3 Játék jár ha szeretnél extra játékot 3-mat adhatsz hozzá 1000 Ft darab áron
+               </p>
+            </div>
+
+
+         </div>
+
+         <div class="flex justify-center pt-8">
+            <table class=" border border-gray-400 w-full text-right ">
+              
+               <tbody>
+                 <tr>
+                   <td class="border border-gray-300 p-4 ">
+                     <button routerLink=""
+                        class="bg-[#EEEEEE] opacity-80 text-[#0A6222] rounded-full px-4 py-2 font-extrabold">
+                        <span class="material-symbols-outlined">
+                           ar_stickers
+                       </span>
+                     </button>
+                   </td>
+                   <td class="border border-gray-300 p-4 ">
+                     <button routerLink=""
+                        class="bg-[#EEEEEE] opacity-80 text-[#0A6222] rounded-full px-4 py-2 font-extrabold">
+                        <span class="material-symbols-outlined">
+                           ar_stickers
+                       </span>
+                     </button>
+
+                   </td>
+                   <td class="border border-gray-300 p-4 ">
+                     <button routerLink=""
+                        class="bg-[#EEEEEE] opacity-80 text-[#0A6222] rounded-full px-4 py-2 font-extrabold">
+                        <span class="material-symbols-outlined">
+                           ar_stickers
+                       </span>
+                     </button>
+
+                   </td>
+                 </tr>
+                 <tr>
+                   <td class="border border-gray-300 p-4 ">
+                     <button routerLink=""
+                        class="bg-[#EEEEEE] opacity-80 text-[#0A6222] rounded-full px-4 py-2 font-extrabold">
+                        <span class="material-symbols-outlined">
+                           ar_stickers
+                       </span>
+                     </button>
+
+                   </td>
+                   <td class="border border-gray-300 p-4 ">
+                     <button routerLink=""
+                        class="bg-[#EEEEEE] opacity-80 text-[#0A6222] rounded-full px-4 py-2 font-extrabold">
+                        <span class="material-symbols-outlined">
+                           ar_stickers
+                       </span>
+                     </button>
+
+                   </td>
+                   <td class="border border-gray-300 p-4">
+                     <button routerLink=""
+                        class="bg-[#EEEEEE] opacity-80 text-[#0A6222] rounded-full px-4 py-2 font-extrabold">
+                        <span class="material-symbols-outlined">
+                           ar_stickers
+                       </span>
+                     </button>
+
+                   </td>
+                 </tr>
+               </tbody>
+             </table>
+
+         </div>
+
+         <div class="flex justify-center pt-32">
+            <table class="w-full">
+               <thead class="border-b border-gray-200">
+                 <tr>
+                   <th class="text-left text-3xl px-4 py-3">Tételek:</th>
+                   <th class="text-left text-3xl px-4 py-3">Árak:</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr class="border-b border-gray-200">
+                   <td class="px-4 py-3">Play Station 5 - Hétvégi csomag</td>
+                   <td class="px-4 py-3">20.000 Ft</td>
+                 </tr>
+                 <tr class="border-b border-gray-200">
+                   <td class="px-4 py-3">Hozzáadott játék</td>
+                   <td class="px-4 py-3">4000 Ft</td>
+                 </tr>
+                 <tr class="border-b border-gray-200"> 
+                   <td class="px-4 py-3">Szállítás</td>
+                   <td class="px-4 py-3">2000 Ft</td>
+                 </tr>
+                 <tr>
+                  <td class="px-4 py-3">Kaució</td>
+                  <td class="px-4 py-3">50.000 Ft</td>
+                </tr>
+               </tbody>
+             </table>
+             
+
+         </div>
+         
+
+        <div class="flex justify-center pt-16">
+            <table class="w-full">
+               <thead class="border-b border-gray-200">
+                 <tr>
+                   <th class="text-left text-3xl px-4 py-3">Tagsági szint: Arany</th>
+                   
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr class="border-b border-gray-200">
+                   <td class="px-4 py-3">Tagságikártya - Arany -10%</td>
+                   <td class="px-4 py-3">-9.600 Ft</td>
+                 </tr>
+                 <tr class="border-b border-gray-200">
+                   <td class="px-4 py-3">Szállítás mentesség</td>
+                   <td class="px-4 py-3">-2000 Ft</td>
+                 </tr>
+                 <tr class="border-b border-gray-200"> 
+                   <td class="px-4 py-3">Kaució mentesség</td>
+                   <td class="px-4 py-3">-50.000 Ft</td>
+                 </tr>
+                 <tr class="pt-4">
+                  <td class="px-4 py-5 text-3xl font-bold">Kedvezmények:</td>
+                  <td class="px-4 py-5">-61.600 Ft</td>
+                </tr>
+               </tbody>
+             </table>
+             
+
+        </div>
+
+        
+
+
+        <div class="flex justify-center pt-16">
+          <table class="w-full">
+             <tbody>
+               <tr class="border-b border-gray-200">
+                 <td class="pt-8 pr-16 text-3xl text-right ">Kupon Kód:</td>
+                 <td class="pt-8 pb-2">
+                  <input
+                    class="shadow appearance-none border bg-white  rounded py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
+                    [(ngModel)]="cuponcode" type="" placeholder="kuponkód">
+                  </td>
+               </tr>
+               <tr class="border-b border-gray-200">
+                 <td class="font-extrabold text-4xl pt-32 px-10 ">Összesen:</td>
+                 <td class="font-extrabold text-4xl pt-32 text-right px-10 ">-2000 Ft</td>
+               </tr>
+             </tbody>
+           </table>
+           
+
+        </div>
+
+        <div>
+          <div class="flex justify-center mt-4">
+            <button routerLink="/rent-delivery"
+                class="bg-[#EEEEEE] opacity-80 text-[#0A6222] rounded-full px-8 py-4 font-extrabold">
+                KÖVETKEZŐ
+            </button>
+        </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+   </div>
+    
+
+
+
+
+</div>
+
