@@ -99,7 +99,7 @@ export class AccountComponent implements OnInit {
   
   nameFormat(name: string){
     const firstWord = name?.split(' ')[0].toUpperCase();
-    return firstWord;
+    return firstWord || "-";
   }
 
   addMessage(text: string, type: string, desc: string){
