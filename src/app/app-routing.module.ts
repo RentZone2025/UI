@@ -13,6 +13,8 @@ import { TwoFactorLoginVerifyComponent } from './two-factor-login-verify/two-fac
 import { TwoFactorSetupComponent } from './two-factor-setup/two-factor-setup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { MyOrderComponent } from './my-order/my-order.component';
+import { EmailVerifyComponent } from './email-verify/email-verify.component';
 
 const routes: Routes = [
   {
@@ -40,6 +42,9 @@ const routes: Routes = [
     path: "register", component: RegisterComponent, 
   },
   {
+    path: "email-verification/verify", component: EmailVerifyComponent, 
+  },
+  {
     path: "2fa/verify", component: TwoFactorLoginVerifyComponent, 
   },
   {
@@ -47,6 +52,9 @@ const routes: Routes = [
   },
   {
     path: "account", component: AccountComponent, canActivate: [authGuard]
+  },
+  {
+    path: "my-order", component: MyOrderComponent, canActivate: [authGuard]
   },
   {
     path: "", redirectTo: "home", pathMatch: "full"

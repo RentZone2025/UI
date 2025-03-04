@@ -93,7 +93,7 @@ export class AuthService {
       map((response:any) => response),
       tap(response => {
         this.setToken(response.access_token);
-        this.router.navigate(['/account']);
+        this.router.navigate(['/login']);
       })
     );
   }
@@ -109,6 +109,15 @@ export class AuthService {
 
   resetpassword(password: string, password_confirmation: string, token: string, id: string): Observable<any> {
     return this.http.post(`${this.API_URL}/reset-password`, { password, password_confirmation, token, id }).pipe(
+      map((response: any) => response),
+      tap(response => {
+        //this.router.navigate(['/login']);
+      })
+    );
+  }
+
+  emailVerify(id: any, hash: any, expires: any, signature: any){
+    return this.http.post(`${this.API_URL}/email/verify/${id}/${hash}`, { expires, signature }).pipe(
       map((response: any) => response),
       tap(response => {
         //this.router.navigate(['/login']);
@@ -154,3 +163,5 @@ export class AuthService {
   }
 
 }
+
+export const { getToken } = AuthService.prototype;
