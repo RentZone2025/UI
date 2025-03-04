@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RentService } from '../services/rent.service';
 import { DatePipe } from '@angular/common';
+import { SubscriptionService } from '../services/subscription.service';
 
 @Component({
   selector: 'app-my-order',
@@ -14,7 +15,8 @@ export class MyOrderComponent implements OnInit {
 
   constructor(
     private rentService:RentService,
-    private datePipe: DatePipe
+    private subscriptionService: SubscriptionService,
+    private datePipe: DatePipe,
   ){}
 
   format(date: any): string {
@@ -32,6 +34,15 @@ export class MyOrderComponent implements OnInit {
         next: (rents) => {
           console.log(rents)
           this.archivedRents = rents;
+        }
+      })
+
+      this.subscriptionService.createSubscription().subscribe({
+        next: (url: any) => {
+          window.location.href = url.url;
+        },
+        error: (error) => {
+          console.error(error)
         }
       })
   }
