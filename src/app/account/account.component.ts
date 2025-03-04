@@ -68,7 +68,7 @@ export class AccountComponent implements OnInit {
         this.user.lastname = this.user.fullname.split(" ")[1]
         this.shipping = user.shipping || this.shipping;
         this.billing = user.billing || this.billing;
-        this.isMatch = Object.keys(this.shipping).length != 0 && Object.keys(this.billing).length != 0 && this.shallowEqual(this.billing, this.shipping)
+        this.isMatch = user.shipping != null && user.billing != null && this.shallowEqual(user.billing, user.shipping)
       },
       error: (error: any) => {
         console.log(error);
