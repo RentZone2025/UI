@@ -15,6 +15,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { MyOrderComponent } from './my-order/my-order.component';
 import { EmailVerifyComponent } from './email-verify/email-verify.component';
+import { SuccessSubscriptionComponent } from './success-subscription/success-subscription.component';
+import { ConnectToClubComponent } from './connect-to-club/connect-to-club.component';
 
 const routes: Routes = [
   {
@@ -55,6 +57,12 @@ const routes: Routes = [
   },
   {
     path: "my-order", component: MyOrderComponent, canActivate: [authGuard]
+  },
+  {
+    path: "connect-to-club", component: ConnectToClubComponent, canActivate: [authGuard]
+  },
+  {
+    path: "success-subscription", component: SuccessSubscriptionComponent, canActivate: [authGuard]
   },
   {
     path: "", redirectTo: "home", pathMatch: "full"

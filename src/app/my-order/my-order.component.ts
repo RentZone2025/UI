@@ -15,7 +15,6 @@ export class MyOrderComponent implements OnInit {
 
   constructor(
     private rentService:RentService,
-    private subscriptionService: SubscriptionService,
     private datePipe: DatePipe,
   ){}
 
@@ -34,15 +33,6 @@ export class MyOrderComponent implements OnInit {
         next: (rents) => {
           console.log(rents)
           this.archivedRents = rents;
-        }
-      })
-
-      this.subscriptionService.createSubscription().subscribe({
-        next: (url: any) => {
-          window.location.href = url.url;
-        },
-        error: (error) => {
-          console.error(error)
         }
       })
   }
