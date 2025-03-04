@@ -1,16 +1,11 @@
-<div class="md:max-w-3xl text-xl rounded-xl mx-auto mt-0 mb-4 px-8 py-4 flex gap-8 items-center justify-center text-white">
+<div
+  class="md:max-w-3xl text-xl rounded-xl mx-auto mt-0 mb-4 px-8 py-4 flex gap-8 items-center justify-center text-white">
 
-  <div
-  routerLink="/account"
-  class="cursor-pointer"
-  >
+  <div routerLink="/account" class="cursor-pointer">
     Felhasználói adatok
   </div>
 
-  <div
-  routerLink="/my-order"
-  class="cursor-pointer"
-  >
+  <div routerLink="/my-order" class="cursor-pointer">
     Rendeléseim
   </div>
 
@@ -28,10 +23,7 @@
         </label>
         <input
           class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
-          [(ngModel)]="user.lastname"
-          type="text"
-          placeholder="Vezetéknév"
-        />
+          [(ngModel)]="user.lastname" type="text" placeholder="Vezetéknév" />
       </div>
 
       <div class="mb-4 w-full">
@@ -40,10 +32,7 @@
         </label>
         <input
           class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
-          [(ngModel)]="user.firstname"
-          type="text"
-          placeholder="Keresztnév"
-        />
+          [(ngModel)]="user.firstname" type="text" placeholder="Keresztnév" />
       </div>
     </div>
 
@@ -54,10 +43,7 @@
         </label>
         <input
           class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
-          [(ngModel)]="user.phone_number"
-          type="phone"
-          placeholder="Telefonszám"
-        />
+          [(ngModel)]="user.phone_number" type="phone" placeholder="Telefonszám" />
       </div>
 
       <div class="mb-4 w-full">
@@ -66,42 +52,29 @@
         </label>
         <input
           class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
-          [(ngModel)]="user.email"
-          type="email"
-          placeholder="Email cím"
-        />
+          [(ngModel)]="user.email" type="email" placeholder="Email cím" />
       </div>
     </div>
   </div>
 
-  <div
-    class="flex justify-end"
-    [ngClass]="{
+  <div class="flex justify-end" [ngClass]="{
     'mb-12': message.desc != 'save_user',
     'mb-4': message.desc == 'save_user',
-  }"
-  >
-    <button
-      (click)="saveUserData()"
-      class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold"
-    >
+  }">
+    <button (click)="saveUserData()"
+      class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
       MENTÉS
     </button>
   </div>
 
-  <div
-    class="border px-4 py-3 rounded relative mb-12"
-    [ngClass]="{
+  <div class="border px-4 py-3 rounded relative mb-12" [ngClass]="{
       hidden: message.desc != 'save_user',
       block: message.desc == 'save_user',
       'bg-red-100 border-red-400 text-red-700': message.type === 'error',
       'bg-green-100 border-green-400 text-green-700': message.type === 'success'
-    }"
-    role="alert"
-  >
+    }" role="alert">
     <strong class="font-bold">
-      {{ message.type === "error" ? "HIBA" : "SIKERES MÓDOSÍTÁS" }} </strong
-    ><br />
+      {{ message.type === "error" ? "HIBA" : "SIKERES MÓDOSÍTÁS" }} </strong><br />
     <span class="block sm:inline">
       {{ message.text }}
     </span>
@@ -115,10 +88,7 @@
         </label>
         <input
           class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
-          [(ngModel)]="passwords.old_password"
-          type="text"
-          placeholder="Régi jelszó"
-        />
+          [(ngModel)]="passwords.old_password" type="text" placeholder="Régi jelszó" />
       </div>
     </div>
 
@@ -129,10 +99,7 @@
         </label>
         <input
           class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
-          [(ngModel)]="passwords.password"
-          type="password"
-          placeholder="Új jelszó"
-        />
+          [(ngModel)]="passwords.password" type="password" placeholder="Új jelszó" />
       </div>
 
       <div class="mb-4 w-full">
@@ -141,42 +108,29 @@
         </label>
         <input
           class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
-          [(ngModel)]="passwords.password_confirmation"
-          type="password"
-          placeholder="Új jelszó megerősítése"
-        />
+          [(ngModel)]="passwords.password_confirmation" type="password" placeholder="Új jelszó megerősítése" />
       </div>
     </div>
   </div>
 
-  <div
-    class="flex justify-end"
-    [ngClass]="{
+  <div class="flex justify-end" [ngClass]="{
     'mb-12': message.desc != 'change_password',
     'mb-4': message.desc == 'change_password',
-  }"
-  >
-    <button
-      (click)="changePassword()"
-      class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold"
-    >
+  }">
+    <button (click)="changePassword()"
+      class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
       MENTÉS
     </button>
   </div>
 
-  <div
-    class="border px-4 py-3 rounded relative mb-12"
-    [ngClass]="{
+  <div class="border px-4 py-3 rounded relative mb-12" [ngClass]="{
       hidden: message.desc != 'change_password',
       block: message.desc == 'change_password',
       'bg-red-100 border-red-400 text-red-700': message.type === 'error',
       'bg-green-100 border-green-400 text-green-700': message.type === 'success'
-    }"
-    role="alert"
-  >
+    }" role="alert">
     <strong class="font-bold">
-      {{ message.type === "error" ? "HIBA" : "SIKERES MÓDOSÍTÁS" }} </strong
-    ><br />
+      {{ message.type === "error" ? "HIBA" : "SIKERES MÓDOSÍTÁS" }} </strong><br />
     <span class="block sm:inline">
       {{ message.text }}
     </span>
@@ -187,20 +141,14 @@
   </div>
 
   <div class="mb-4 flex items-center justify-center">
-    <div
-      class="text-white text-left flex flex-row gap-4 items-center justify-start"
-    >
+    <div class="text-white text-left flex flex-row gap-4 items-center justify-start">
       <ng-template [ngIf]="two_factor_auth_enabled == true">
         <span
-          class="bg-green-100 text-green-800 font-extrabold me-2 px-4 py-1.5 rounded-full dark:bg-green-900 dark:text-green-300"
-          >Bekapcsolva</span
-        >
+          class="bg-green-100 text-green-800 font-extrabold me-2 px-4 py-1.5 rounded-full dark:bg-green-900 dark:text-green-300">Bekapcsolva</span>
       </ng-template>
       <ng-template [ngIf]="two_factor_auth_enabled == false">
         <span
-          class="bg-red-100 text-red-800 me-2 px-4 py-1.5 rounded-full dark:bg-red-900 dark:text-red-300 font-extrabold"
-          >Kikapcsolva</span
-        >
+          class="bg-red-100 text-red-800 me-2 px-4 py-1.5 rounded-full dark:bg-red-900 dark:text-red-300 font-extrabold">Kikapcsolva</span>
       </ng-template>
     </div>
   </div>
@@ -212,45 +160,35 @@
   </div>
 
   <div class="flex justify-center mb-12">
-    <button
-      *ngIf="two_factor_auth_enabled == false"
-      routerLink="/2fa/setup"
-      class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold"
-    >
+    <button *ngIf="two_factor_auth_enabled == false" routerLink="/2fa/setup"
+      class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
       AKTIVÁLÁS
     </button>
-    <button
-      *ngIf="two_factor_auth_enabled == true"
-      (click)="TwoFactorAuthDeactivate()"
-      class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold"
-    >
+    <button *ngIf="two_factor_auth_enabled == true" (click)="TwoFactorAuthDeactivate()"
+      class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
       DEAKTIVÁLÁS
     </button>
   </div>
 
   <div class="text-white mx-auto mb-12 text-center text-xl">Tagság</div>
 
-  <div class="mb-12 mx-auto max-w-sm">
+  <div class="mb-12 mx-auto max-w-md">
     <div class="text-white flex items-center gap-4 mb-4">
       <div>Jelenlegi szintem:</div>
-      <div
-        class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold"
-      >
-        BRONZ
+      <div class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
+        {{
+        nameFormat(subscription?.product?.name) 
+        }}
       </div>
-      <button
-        routerLink="/2fa/setup"
-        class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold"
-      >
+      <button routerLink="/2fa/setup"
+        class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
         FEJLESZTÉS
       </button>
     </div>
-    <div class="text-white">
+    <div class="text-white" *ngIf="subscription?.product?.benefits">
       <div class="font-bold">Szintem előnyei:</div>
       <ul class="ml-8">
-        <li>10% kedvezmény (minden szolgáltatásra)</li>
-        <li>30%-kal kevesebb kaució</li>
-        <li>Szállitási költség mentesség</li>
+        <li *ngFor="let benefit of subscription?.product?.benefits">{{ benefit }}</li>
       </ul>
     </div>
   </div>
@@ -265,11 +203,8 @@
         </label>
         <input
           class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
-          [(ngModel)]="shipping.city"
-          (ngModelChange)="isMatch ? changeShippingData() : undefined"
-          type="text"
-          placeholder="Város"
-        />
+          [(ngModel)]="shipping.city" (ngModelChange)="isMatch ? changeShippingData() : undefined" type="text"
+          placeholder="Város" />
       </div>
 
       <div class="mb-4 w-full">
@@ -278,13 +213,8 @@
         </label>
         <input
           class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
-          [(ngModel)]="shipping.postal_code"
-          (ngModelChange)="isMatch ? changeShippingData() : undefined"
-          type="number"
-          minlength="4"
-          maxlength="4"
-          placeholder="Irányító szám"
-        />
+          [(ngModel)]="shipping.postal_code" (ngModelChange)="isMatch ? changeShippingData() : undefined" type="number"
+          minlength="4" maxlength="4" placeholder="Irányító szám" />
       </div>
     </div>
 
@@ -295,11 +225,8 @@
         </label>
         <input
           class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
-          [(ngModel)]="shipping.address"
-          (ngModelChange)="isMatch ? changeShippingData() : undefined"
-          type="text"
-          placeholder="Cím"
-        />
+          [(ngModel)]="shipping.address" (ngModelChange)="isMatch ? changeShippingData() : undefined" type="text"
+          placeholder="Cím" />
       </div>
 
       <div class="mb-4 w-full">
@@ -308,59 +235,39 @@
         </label>
         <input
           class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline"
-          [(ngModel)]="shipping.country"
-          (ngModelChange)="isMatch ? changeShippingData() : undefined"
-          type="text"
-          placeholder="Vármegye"
-        />
+          [(ngModel)]="shipping.country" (ngModelChange)="isMatch ? changeShippingData() : undefined" type="text"
+          placeholder="Vármegye" />
       </div>
     </div>
   </div>
 
-  <div
-    class="flex justify-end"
-    [ngClass]="{
+  <div class="flex justify-end" [ngClass]="{
     'mb-12': message.desc != 'change_shipping',
     'mb-4': message.desc == 'change_shipping',
-  }"
-  >
+  }">
     <div class="flex items-center gap-2 mr-2">
-      <label
-        for="hs-default-checkbox"
-        class="text-sm text-white ms-3 dark:text-neutral-400"
-      >
+      <label for="hs-default-checkbox" class="text-sm text-white ms-3 dark:text-neutral-400">
         Megeggyezik a szállítási cím és a számlázási cím
       </label>
-      <input
-        [(ngModel)]="isMatch"
-        (ngModelChange)="isMatch ? changeShippingData() : undefined"
-        type="checkbox"
+      <input [(ngModel)]="isMatch" (ngModelChange)="isMatch ? changeShippingData() : undefined" type="checkbox"
         class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-        id="hs-default-checkbox"
-      />
+        id="hs-default-checkbox" />
     </div>
 
-    <button
-      (click)="changeShipping()"
-      class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold"
-    >
+    <button (click)="changeShipping()"
+      class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
       MENTÉS
     </button>
   </div>
 
-  <div
-    class="border px-4 py-3 rounded relative mb-12"
-    [ngClass]="{
+  <div class="border px-4 py-3 rounded relative mb-12" [ngClass]="{
       hidden: message.desc != 'change_shipping',
       block: message.desc == 'change_shipping',
       'bg-red-100 border-red-400 text-red-700': message.type === 'error',
       'bg-green-100 border-green-400 text-green-700': message.type === 'success'
-    }"
-    role="alert"
-  >
+    }" role="alert">
     <strong class="font-bold">
-      {{ message.type === "error" ? "HIBA" : "SIKERES MÓDOSÍTÁS" }} </strong
-    ><br />
+      {{ message.type === "error" ? "HIBA" : "SIKERES MÓDOSÍTÁS" }} </strong><br />
     <span class="block sm:inline">
       {{ message.text }}
     </span>
@@ -374,28 +281,18 @@
         <label class="block text-white text-sm font-bold mb-2" for="username">
           Város
         </label>
-        <input
-          [disabled]="isMatch"
+        <input [disabled]="isMatch"
           class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline disabled:bg-[#3b3737] disabled:text-white disabled:border-0"
-          [(ngModel)]="billing.city"
-          type="text"
-          placeholder="Város"
-        />
+          [(ngModel)]="billing.city" type="text" placeholder="Város" />
       </div>
 
       <div class="mb-4 w-full">
         <label class="block text-white text-sm font-bold mb-2" for="username">
           Irányító szám
         </label>
-        <input
-          [disabled]="isMatch"
+        <input [disabled]="isMatch"
           class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline disabled:bg-[#3b3737] disabled:text-white disabled:border-0"
-          [(ngModel)]="billing.postal_code"
-          type="number"
-          min="1000"
-          max="9999"
-          placeholder="Irányító szám"
-        />
+          [(ngModel)]="billing.postal_code" type="number" min="1000" max="9999" placeholder="Irányító szám" />
       </div>
     </div>
 
@@ -406,11 +303,7 @@
         </label>
         <input
           class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline disabled:bg-[#3b3737] disabled:text-white disabled:border-0"
-          [disabled]="isMatch"
-          [(ngModel)]="billing.address"
-          type="text"
-          placeholder="Cím"
-        />
+          [disabled]="isMatch" [(ngModel)]="billing.address" type="text" placeholder="Cím" />
       </div>
 
       <div class="mb-4 w-full">
@@ -419,44 +312,29 @@
         </label>
         <input
           class="shadow appearance-none border bg-white rounded w-full py-2 px-2 text-[#2b2828] leading-tight focus:outline-none focus:shadow-outline disabled:bg-[#3b3737] disabled:text-white disabled:border-0"
-          [disabled]="isMatch"
-          [(ngModel)]="billing.country"
-          type="text"
-          placeholder="Vármegye"
-        />
+          [disabled]="isMatch" [(ngModel)]="billing.country" type="text" placeholder="Vármegye" />
       </div>
     </div>
   </div>
 
-  <div
-    class="flex justify-end"
-    [ngClass]="{
+  <div class="flex justify-end" [ngClass]="{
     'mb-12': message.desc != 'change_billing',
     'mb-4': message.desc == 'change_billing',
-  }"
-  >
-    <button
-      (click)="changeBilling()"
-      [disabled]="isMatch"
-      class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold disabled:bg-gray-300"
-    >
+  }">
+    <button (click)="changeBilling()" [disabled]="isMatch"
+      class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold disabled:bg-gray-300">
       MENTÉS
     </button>
   </div>
 
-  <div
-    class="border px-4 py-3 rounded relative mb-12"
-    [ngClass]="{
+  <div class="border px-4 py-3 rounded relative mb-12" [ngClass]="{
       hidden: message.desc != 'change_billing',
       block: message.desc == 'change_billing',
       'bg-red-100 border-red-400 text-red-700': message.type === 'error',
       'bg-green-100 border-green-400 text-green-700': message.type === 'success'
-    }"
-    role="alert"
-  >
+    }" role="alert">
     <strong class="font-bold">
-      {{ message.type === "error" ? "HIBA" : "SIKERES MÓDOSÍTÁS" }} </strong
-    ><br />
+      {{ message.type === "error" ? "HIBA" : "SIKERES MÓDOSÍTÁS" }} </strong><br />
     <span class="block sm:inline">
       {{ message.text }}
     </span>

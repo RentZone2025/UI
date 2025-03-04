@@ -40,6 +40,7 @@ export class AccountComponent implements OnInit {
     address: "",
     country: ""
   };
+  subscription: any;
   passwords: any = {
     old_password: "",
     password: "",
@@ -68,6 +69,7 @@ export class AccountComponent implements OnInit {
         this.user.lastname = this.user.fullname.split(" ")[1]
         this.shipping = user.shipping || this.shipping;
         this.billing = user.billing || this.billing;
+        this.subscription = user.subscription;
         this.isMatch = user.shipping != null && user.billing != null && this.shallowEqual(user.billing, user.shipping)
       },
       error: (error: any) => {
@@ -95,6 +97,10 @@ export class AccountComponent implements OnInit {
     return true;
   }
   
+  nameFormat(name: string){
+    const firstWord = name?.split(' ')[0].toUpperCase();
+    return firstWord || "-";
+  }
 
   addMessage(text: string, type: string, desc: string){
     this.message = {

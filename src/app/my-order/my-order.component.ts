@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RentService } from '../services/rent.service';
 import { DatePipe } from '@angular/common';
+import { SubscriptionService } from '../services/subscription.service';
 
 @Component({
   selector: 'app-my-order',
@@ -14,7 +15,7 @@ export class MyOrderComponent implements OnInit {
 
   constructor(
     private rentService:RentService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
   ){}
 
   format(date: any): string {

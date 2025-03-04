@@ -24,6 +24,8 @@ import { MyOrderComponent } from './my-order/my-order.component';
 import { EmailVerifyComponent } from './email-verify/email-verify.component';
 import { DatePipe } from '@angular/common';
 import { authInterceptor } from './interceptors/auth.interceptor';
+import { SuccessSubscriptionComponent } from './success-subscription/success-subscription.component';
+import { ConnectToClubComponent } from './connect-to-club/connect-to-club.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { authInterceptor } from './interceptors/auth.interceptor';
     TwoFactorSetupComponent,
     ResetPasswordComponent,
     MyOrderComponent,
-    EmailVerifyComponent
+    EmailVerifyComponent,
+    SuccessSubscriptionComponent,
+    ConnectToClubComponent
   ],
   imports: [
     BrowserModule,
