@@ -34,7 +34,10 @@ export class AuthService {
         if(response['2fa'] == true) this.router.navigate(['/2fa/verify']);
         else {
           this.setToken(response.access_token);
-          this.router.navigate(['/account']);
+          localStorage.setItem('ROLE', response.user.role);
+          console.log(response.user.role == 'admin');
+          if(response.user.role == 'admin') this.router.navigate(['/admin/dashboard']);
+          else this.router.navigate(['/user/account']);
         }
       })
     );
@@ -46,8 +49,10 @@ export class AuthService {
       map((response: any) => response),
       tap(response => {
         localStorage.removeItem('temp_user_id');
-        this.setToken(response.access_token);
-        this.router.navigate(['/account']);
+        localStorage.setItem('ROLE', response.user.role);
+        console.log(response.user.role == 'admin');
+        if(response.user.role == 'admin') this.router.navigate(['/admin/dashboard']);
+        else this.router.navigate(['/user/account']);
       })
     );
   }
@@ -135,6 +140,10 @@ export class AuthService {
 
   removeToken() {
     localStorage.removeItem('token');
+  }
+
+  getRole(): string | null {
+    return localStorage.getItem('ROLE') || null;
   }
 
   getCurrentUser(){

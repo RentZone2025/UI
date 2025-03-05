@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AccountComponent } from './account/account.component';
-import { authGuard } from './guards/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { TwoFactorLoginVerifyComponent } from './two-factor-login-verify/two-factor-login-verify.component';
 import { TwoFactorSetupComponent } from './two-factor-setup/two-factor-setup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
@@ -17,53 +17,97 @@ import { MyOrderComponent } from './my-order/my-order.component';
 import { EmailVerifyComponent } from './email-verify/email-verify.component';
 import { SuccessSubscriptionComponent } from './success-subscription/success-subscription.component';
 import { ConnectToClubComponent } from './connect-to-club/connect-to-club.component';
+import { UserViewComponent } from './user-view/user-view.component';
+import { AdminViewComponent } from './admin-view/admin-view.component';
+import { AppComponent } from './app.component';
+import { AdminDashboardComponent } from './Admins/admin-dashboard/admin-dashboard.component';
+import { AdminSubscriptionPlanComponent } from './Admins/admin-subscription-plan/admin-subscription-plan.component';
+import { AdminSubscriptionPlansComponent } from './Admins/admin-subscription-plans/admin-subscription-plans.component';
+import { AdminSubscriptionPriceComponent } from './Admins/admin-subscription-price/admin-subscription-price.component';
 
 const routes: Routes = [
+
+  // Közös route-ok, amelyek mindenki számára elérhetőek
   {
-    path: "home", component: HomeComponent
-  },
-  {
-    path: "contact", component: ContactComponent
+    path: "home",
+    component: HomeComponent,
   },
   {
     path: "rent", component: RentComponent
   },
   {
-    path: "club-card", component: ClubCardComponent 
+    path: "contact",
+    component: ContactComponent
   },
   {
-    path: "login", component: LoginComponent 
+    path: "login",
+    component: LoginComponent
   },
   {
-    path: "forgot-password", component: ForgotPasswordComponent 
+    path: "register",
+    component: RegisterComponent,
   },
   {
-    path: "reset-password", component: ResetPasswordComponent 
+    path: "forgot-password", component: ForgotPasswordComponent
   },
   {
-    path: "register", component: RegisterComponent, 
+    path: "reset-password", component: ResetPasswordComponent
   },
   {
-    path: "email-verification/verify", component: EmailVerifyComponent, 
+    path: "email-verification/verify", component: EmailVerifyComponent,
   },
   {
-    path: "2fa/verify", component: TwoFactorLoginVerifyComponent, 
+    path: "2fa/verify", component: TwoFactorLoginVerifyComponent,
   },
+
   {
-    path: "2fa/setup", component: TwoFactorSetupComponent, canActivate: [authGuard]
+    path: "user",
+    canActivate: [AuthGuard], 
+    data: { role: "user" },
+    children: [
+      {
+        path: "club-card", component: ClubCardComponent
+      },
+      {
+        path: "2fa/setup", component: TwoFactorSetupComponent
+      },
+      {
+        path: "account", component: AccountComponent
+      },
+      {
+        path: "my-order", component: MyOrderComponent
+      },
+      {
+        path: "connect-to-club", component: ConnectToClubComponent
+      },
+      {
+        path: "success-subscription", component: SuccessSubscriptionComponent
+      },
+    ]
   },
+
+  // ADMIN
   {
-    path: "account", component: AccountComponent, canActivate: [authGuard]
+    path: "admin",
+    component: AdminViewComponent,
+    canActivate: [AuthGuard], 
+    data: { role: "admin" },
+    children: [
+      {
+        path: "dashboard", component: AdminDashboardComponent
+      },
+      {
+        path: "subscriptions/plans", component: AdminSubscriptionPlansComponent
+      },
+      {
+        path: "subscriptions/plan/:id", component: AdminSubscriptionPlanComponent
+      },
+      {
+        path: "subscriptions/price/:id", component: AdminSubscriptionPriceComponent
+      }
+    ]
   },
-  {
-    path: "my-order", component: MyOrderComponent, canActivate: [authGuard]
-  },
-  {
-    path: "connect-to-club", component: ConnectToClubComponent, canActivate: [authGuard]
-  },
-  {
-    path: "success-subscription", component: SuccessSubscriptionComponent, canActivate: [authGuard]
-  },
+
   {
     path: "", redirectTo: "home", pathMatch: "full"
   },

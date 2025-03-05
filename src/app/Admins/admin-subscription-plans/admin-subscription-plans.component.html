@@ -1,0 +1,41 @@
+<div class="md:max-w-3xl rounded-xl mx-auto mt-2 bg-[#595656] px-8 py-4">
+
+    <div class="flex items-center justify-center" *ngIf="loading">
+        <div class="text-center my-12 w-md mx-auto">
+            <div class="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-yellow-500 mx-auto"></div>
+            <h2 class="text-zinc-900 dark:text-white mt-4">Loading...</h2>
+            <p class="text-zinc-600 dark:text-zinc-400">
+                Your adventure is about to begin
+            </p>
+        </div>
+    </div>
+
+    <div class="flex justify-start gap-8 items-center border-b border-[#595656] py-2">
+
+        <table class="w-full">
+            <tbody>
+                <tr 
+                *ngFor="let plan of plans.data" class="border-b last:border-0 border-white hover:bg-[#8f8a8a] cursor-pointer"
+                (click)="selectPlan(plan)"
+                >
+                    <td class="text-white flex items-center gap-4 py-4 px-2">
+                        <div class="w-9 h-9 bg-gray-100 flex items-center justify-center">
+                            <span class="material-symbols-outlined" [ngClass]="{
+                                'text-green-500': plan.active,
+                                'text-red-500': !plan.active,
+                            }">
+                                deployed_code
+                            </span>
+                        </div>
+                        <div>{{ plan.name }}</div>
+                    </td>
+                    <td class="text-white py-4">{{ priceFormat(plan.prices.data) }}</td>
+                    <td class="text-white py-4">{{ plan.created * 1000 | date: 'MMM dd' }}</td>
+                    <td class="text-white py-4">{{ plan.updated * 1000 | date: 'MMM dd' }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

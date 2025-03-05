@@ -26,6 +26,13 @@ import { DatePipe } from '@angular/common';
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { SuccessSubscriptionComponent } from './success-subscription/success-subscription.component';
 import { ConnectToClubComponent } from './connect-to-club/connect-to-club.component';
+import { AdminViewComponent } from './admin-view/admin-view.component';
+import { UserViewComponent } from './user-view/user-view.component';
+import { AdminDashboardComponent } from './Admins/admin-dashboard/admin-dashboard.component';
+import { AdminSubscriptionPlansComponent } from './Admins/admin-subscription-plans/admin-subscription-plans.component';
+import { AdminSubscriptionPlanComponent } from './Admins/admin-subscription-plan/admin-subscription-plan.component';
+import { AdminSubscriptionPriceComponent } from './Admins/admin-subscription-price/admin-subscription-price.component';
+import { AdminNavbarComponent } from './Admins/admin-navbar/admin-navbar.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +54,14 @@ import { ConnectToClubComponent } from './connect-to-club/connect-to-club.compon
     MyOrderComponent,
     EmailVerifyComponent,
     SuccessSubscriptionComponent,
-    ConnectToClubComponent
+    ConnectToClubComponent,
+    AdminViewComponent,
+    UserViewComponent,
+    AdminDashboardComponent,
+    AdminSubscriptionPlansComponent,
+    AdminSubscriptionPlanComponent,
+    AdminSubscriptionPriceComponent,
+    AdminNavbarComponent
   ],
   imports: [
     BrowserModule,
