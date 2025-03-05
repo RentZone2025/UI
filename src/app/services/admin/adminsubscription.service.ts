@@ -14,6 +14,8 @@ export class AdminsubscriptionService {
     private http: HttpClient
   ) { }
 
+  // PLANS
+
   getSubscriptionPlans() {
     return this.http.get(`${this.API_URL}/admin/subscriptions/plans`, {
       headers: {
@@ -32,6 +34,24 @@ export class AdminsubscriptionService {
 
   getSubscriptionPrice(id: number) {
     return this.http.get(`${this.API_URL}/admin/subscriptions/prices/${id}`, {
+      headers: {
+        'Authorization': `Bearer ${getToken()}`
+      }
+    });
+  }
+
+  // INVOICES
+
+  getSubscriptionInvoices() {
+    return this.http.get(`${this.API_URL}/admin/subscriptions/invoices`, {
+      headers: {
+        'Authorization': `Bearer ${getToken()}`
+      }
+    });
+  }
+
+  getSubscriptionInvoice(id: number) {
+    return this.http.get(`${this.API_URL}/admin/subscriptions/invoices/${id}`, {
       headers: {
         'Authorization': `Bearer ${getToken()}`
       }

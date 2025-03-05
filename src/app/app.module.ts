@@ -33,6 +33,8 @@ import { AdminSubscriptionPlansComponent } from './Admins/admin-subscription-pla
 import { AdminSubscriptionPlanComponent } from './Admins/admin-subscription-plan/admin-subscription-plan.component';
 import { AdminSubscriptionPriceComponent } from './Admins/admin-subscription-price/admin-subscription-price.component';
 import { AdminNavbarComponent } from './Admins/admin-navbar/admin-navbar.component';
+import { AdminSubscriptionInvoicesComponent } from './Admins/admin-subscription-invoices/admin-subscription-invoices.component';
+import { AdminSubscriptionInvoiceComponent } from './Admins/admin-subscription-invoice/admin-subscription-invoice.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import { AdminNavbarComponent } from './Admins/admin-navbar/admin-navbar.compone
     AdminSubscriptionPlansComponent,
     AdminSubscriptionPlanComponent,
     AdminSubscriptionPriceComponent,
-    AdminNavbarComponent
+    AdminNavbarComponent,
+    AdminSubscriptionInvoicesComponent,
+    AdminSubscriptionInvoiceComponent
   ],
   imports: [
     BrowserModule,

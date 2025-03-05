@@ -24,6 +24,8 @@ import { AdminDashboardComponent } from './Admins/admin-dashboard/admin-dashboar
 import { AdminSubscriptionPlanComponent } from './Admins/admin-subscription-plan/admin-subscription-plan.component';
 import { AdminSubscriptionPlansComponent } from './Admins/admin-subscription-plans/admin-subscription-plans.component';
 import { AdminSubscriptionPriceComponent } from './Admins/admin-subscription-price/admin-subscription-price.component';
+import { AdminSubscriptionInvoicesComponent } from './Admins/admin-subscription-invoices/admin-subscription-invoices.component';
+import { AdminSubscriptionInvoiceComponent } from './Admins/admin-subscription-invoice/admin-subscription-invoice.component';
 
 const routes: Routes = [
 
@@ -104,7 +106,13 @@ const routes: Routes = [
       },
       {
         path: "subscriptions/price/:id", component: AdminSubscriptionPriceComponent
-      }
+      },
+      {
+        path: "subscriptions/invoices", component: AdminSubscriptionInvoicesComponent
+      },
+      {
+        path: "subscriptions/invoice/:id", component: AdminSubscriptionInvoiceComponent
+      },
     ]
   },
 

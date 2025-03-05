@@ -19,7 +19,7 @@ export class AdminNavbarComponent {
       name: 'Billing',
       items: [
         { name: 'Subscriptions', link: '/admin/subscriptions/plans' },
-        { name: 'Invoices', link: '/admin/subscriptions/prices' }
+        { name: 'Invoices', link: '/admin/subscriptions/invoices' }
       ]
     },
   }
