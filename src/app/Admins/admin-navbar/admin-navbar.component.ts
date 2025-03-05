@@ -9,17 +9,17 @@ import { Router } from '@angular/router';
 export class AdminNavbarComponent {
 
   links: { [key: string]: string } = {
-    "Customers": "/admin/dashboard",
-    "Product catalog": "/admin/subscriptions/plans",
+    "Vásárlók": "/admin/dashboard",
+    "Tagságok": "/admin/subscriptions/plans",
   }
 
   dropdowns: { [key: string]: { open: boolean, name: string, items: { [key: string]: any } } } = {
     "billing": {
       open: false,
-      name: 'Billing',
+      name: 'Fizetés',
       items: [
-        { name: 'Subscriptions', link: '/admin/subscriptions/plans' },
-        { name: 'Invoices', link: '/admin/subscriptions/invoices' }
+        { name: 'Feliratkozások', link: '/admin/subscriptions/subscriptions' },
+        { name: 'Számlák', link: '/admin/subscriptions/invoices' }
       ]
     },
   }

@@ -9,7 +9,7 @@ import { getToken } from '../../services/auth.service';
 export class AdminsubscriptionService {
 
   private API_URL = environment.apiUrl;
-  
+
   constructor(
     private http: HttpClient
   ) { }
@@ -52,6 +52,24 @@ export class AdminsubscriptionService {
 
   getSubscriptionInvoice(id: number) {
     return this.http.get(`${this.API_URL}/admin/subscriptions/invoices/${id}`, {
+      headers: {
+        'Authorization': `Bearer ${getToken()}`
+      }
+    });
+  }
+
+  // SUBSCRIPTIONS
+
+  getSubscriptionSubscriptions() {
+    return this.http.get(`${this.API_URL}/admin/subscriptions/subscriptions`, {
+      headers: {
+        'Authorization': `Bearer ${getToken()}`
+      }
+    });
+  }
+
+  getSubscriptionSubscription(id: number) {
+    return this.http.get(`${this.API_URL}/admin/subscriptions/subscriptions/${id}`, {
       headers: {
         'Authorization': `Bearer ${getToken()}`
       }

@@ -10,40 +10,49 @@
         </div>
     </div>
 
-    <div class="flex justify-start gap-8 items-center border-b border-[#595656] py-2" *ngIf="!loading">
+    <div *ngIf="!loading">
 
-        <table class="w-full text-sm text-left">
-            <thead>
-                <tr class="border-b last:border-0 border-white">
-                    <th class="text-white py-4 px-2">Amount</th>
-                    <th class="text-white py-4">Frequency</th>
-                    <th class="text-white py-4">Invoice number</th>
-                    <th class="text-white py-4">Customer email</th>
-                    <th class="text-white py-4">Due</th>
-                    <th class="text-white py-4">Created</th>
-                </tr>
-            </thead>
-            <tbody class="divide-y divide-white text-xs">
-                <tr 
-                *ngFor="let invoice of invoices.data" class="border-b last:border-0 border-white hover:bg-[#8f8a8a] cursor-pointer"
-                (click)="selectInvoice(invoice)"
-                >
-                    <td class="text-white flex flex-col items-center gap-2 py-4 px-2 text-xs">
-                        <div>{{ priceFormat(invoice.total, invoice.currency) }}</div>
-                        <div>
-                            <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">
-                                {{ invoice.status }}
-                            </span>
-                        </div>
-                    </td>
-                    <td class="text-white py-4">{{ invoice.frequency || '-' }}</td>
-                    <td class="text-white py-4">{{ invoice.number }}</td>
-                    <td class="text-white py-4">{{ invoice.customer_email }}</td>
-                    <td class="text-white py-4">{{ invoice.due_date ? (invoice.due_date * 1000 | date: 'MMM dd') : '-' }}</td>
-                    <td class="text-white py-4">{{ invoice.created * 1000 | date: 'MMM dd' }}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="text-white text-lg font-bold mb-4 text-center">
+            Számlák
+        </div>
+
+        <div class="flex justify-start gap-8 items-center border-b border-[#595656] py-2">
+
+            <table class="w-full text-sm text-left">
+                <thead>
+                    <tr class="border-b last:border-0 border-white">
+                        <th class="text-white py-4 px-2">Amount</th>
+                        <th class="text-white py-4">Frequency</th>
+                        <th class="text-white py-4">Invoice number</th>
+                        <th class="text-white py-4">Customer email</th>
+                        <th class="text-white py-4">Due</th>
+                        <th class="text-white py-4">Created</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white text-xs">
+                    <tr *ngFor="let invoice of invoices.data"
+                        class="border-b last:border-0 border-white hover:bg-[#8f8a8a] cursor-pointer"
+                        (click)="selectInvoice(invoice)">
+                        <td class="text-white flex flex-col items-center gap-2 py-4 px-2 text-xs">
+                            <div>{{ priceFormat(invoice.total, invoice.currency) }}</div>
+                            <div>
+                                <span
+                                    class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">
+                                    {{ invoice.status }}
+                                </span>
+                            </div>
+                        </td>
+                        <td class="text-white py-4">{{ invoice.frequency || '-' }}</td>
+                        <td class="text-white py-4">{{ invoice.number }}</td>
+                        <td class="text-white py-4">{{ invoice.customer_email }}</td>
+                        <td class="text-white py-4">{{ invoice.due_date ? (invoice.due_date * 1000 | date: 'MMM dd') :
+                            '-' }}</td>
+                        <td class="text-white py-4">{{ invoice.created * 1000 | date: 'MMM dd' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
 
     </div>
 

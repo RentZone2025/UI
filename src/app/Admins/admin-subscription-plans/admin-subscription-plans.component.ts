@@ -37,4 +37,8 @@ export class AdminSubscriptionPlansComponent implements OnInit {
     this.router.navigate(['/admin/subscriptions/plan', plan.id]);
   }
 
+  addPlan() {
+    console.log('add plan');
+  }
+
 }

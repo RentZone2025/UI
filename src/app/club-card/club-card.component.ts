@@ -54,7 +54,7 @@ export class ClubCardComponent implements OnInit {
 
   activateSubplan(plans: any, plan: any, subplan: any) {
     this.subscriptionService.setPlanData(plans, plan, subplan);
-    this.router.navigate(['/connect-to-club']);
+    this.router.navigate(['/user/connect-to-club']);
   }
 
 }
