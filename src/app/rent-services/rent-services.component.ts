@@ -20,7 +20,7 @@ export class RentServicesComponent {
 
   onPackageChange2() {
     console.log('Kiválasztott eszköz:', this.selectedResort);
-    // Itt kezelheted a kiválasztott csomagot
+    // Itt kezelheted a kiválasztott eszközt
   }
   
 

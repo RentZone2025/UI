@@ -15,6 +15,9 @@ import { TwoFactorSetupComponent } from './two-factor-setup/two-factor-setup.com
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { RentServicesComponent } from './rent-services/rent-services.component';
+import { RentDeliveryComponent } from './rent-delivery/rent-delivery.component';
+import { RentPaymentComponent } from './rent-payment/rent-payment.component';
+import { RentConfirmComponent } from './rent-confirm/rent-confirm.component';
 
 const routes: Routes = [
   {
@@ -57,11 +60,21 @@ const routes: Routes = [
     path: "rent-services", component: RentServicesComponent
   },
   {
+    path: "rent-delivery", component: RentDeliveryComponent
+  },
+  {
+    path: "rent-payment", component: RentPaymentComponent
+  },
+  {
+    path: "rent-confirm", component: RentConfirmComponent
+  },
+  {
     path: "", redirectTo: "home", pathMatch: "full"
   },
   {
     path: "**", component: NotFoundComponent
-  }
+  },
+
 ];
 
 @NgModule({

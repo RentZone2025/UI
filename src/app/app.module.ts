@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
+
 import { provideHttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -47,7 +48,8 @@ import { RentConfirmComponent } from './rent-confirm/rent-confirm.component';
     RentServicesComponent,
     RentDeliveryComponent,
     RentPaymentComponent,
-    RentConfirmComponent
+    RentConfirmComponent,
+    
   ],
   imports: [
     BrowserModule,
