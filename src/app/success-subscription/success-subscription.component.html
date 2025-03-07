@@ -1,0 +1,36 @@
+<div class="md:max-w-3xl rounded-xl mx-auto mt-2 bg-[#595656] px-8 py-4">
+    <div class="text-green-500 mx-auto mb-12 text-center text-3xl">
+        <svg
+        class="w-16 h-16 text-green-500 mx-auto mb-4"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+        ></path>
+      </svg>
+        Sikeres előfizetés
+    </div>
+
+    <!-- Felhasználói és előfizetési információk -->
+    <div class="text-white text-center mb-4">
+        <p class="text-lg">Előfizetés ID: {{ subscription?.id }}</p>
+        <p class="text-lg">Előfizetés állapota: {{ subscription?.status | titlecase }}</p>
+        <p class="text-lg">Kezdési dátum: {{ subscription?.start_date * 1000 | date }}</p>
+        <p class="text-lg">Aktuális időszak vége: {{ subscription?.current_period_end * 1000 | date }}</p>
+    </div>
+
+    <!-- Termékek listája -->
+    <div *ngFor="let product of products" class="bg-[#494848] rounded-lg mb-6 px-6 py-4">
+        <h3 class="text-2xl font-semibold text-white">{{ product?.product_name }}</h3>
+        <div class="mt-4">
+            <p class="text-lg text-white">Ár: {{ product?.price }} {{ product?.currency }}</p>
+            <p class="text-lg text-white">Fizetési intervallum: {{ product?.interval_count }} {{ product?.interval | titlecase }}</p>
+        </div>
+    </div>
+</div>

@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { RentComponent } from './rent/rent.component';
-import { OrderComponent } from './order/order.component';
 import { ClubCardComponent } from './club-card/club-card.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -14,10 +13,17 @@ import { TwoFactorLoginVerifyComponent } from './two-factor-login-verify/two-fac
 import { TwoFactorSetupComponent } from './two-factor-setup/two-factor-setup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+
 import { RentServicesComponent } from './rent-services/rent-services.component';
 import { RentDeliveryComponent } from './rent-delivery/rent-delivery.component';
 import { RentPaymentComponent } from './rent-payment/rent-payment.component';
 import { RentConfirmComponent } from './rent-confirm/rent-confirm.component';
+
+import { MyOrderComponent } from './my-order/my-order.component';
+import { EmailVerifyComponent } from './email-verify/email-verify.component';
+import { SuccessSubscriptionComponent } from './success-subscription/success-subscription.component';
+import { ConnectToClubComponent } from './connect-to-club/connect-to-club.component';
+
 
 const routes: Routes = [
   {
@@ -28,9 +34,6 @@ const routes: Routes = [
   },
   {
     path: "rent", component: RentComponent
-  },
-  {
-    path: "order", component: OrderComponent
   },
   {
     path: "club-card", component: ClubCardComponent 
@@ -48,6 +51,9 @@ const routes: Routes = [
     path: "register", component: RegisterComponent, 
   },
   {
+    path: "email-verification/verify", component: EmailVerifyComponent, 
+  },
+  {
     path: "2fa/verify", component: TwoFactorLoginVerifyComponent, 
   },
   {
@@ -57,6 +63,7 @@ const routes: Routes = [
     path: "account", component: AccountComponent, canActivate: [authGuard]
   },
   {
+
     path: "rent-services", component: RentServicesComponent
   },
   {
@@ -67,6 +74,15 @@ const routes: Routes = [
   },
   {
     path: "rent-confirm", component: RentConfirmComponent
+
+    path: "my-order", component: MyOrderComponent, canActivate: [authGuard]
+  },
+  {
+    path: "connect-to-club", component: ConnectToClubComponent, canActivate: [authGuard]
+  },
+  {
+    path: "success-subscription", component: SuccessSubscriptionComponent, canActivate: [authGuard]
+
   },
   {
     path: "", redirectTo: "home", pathMatch: "full"

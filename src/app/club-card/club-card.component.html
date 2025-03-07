@@ -18,178 +18,66 @@
         </div>
     </div>
 
-    <div class="mx-auto px-8 my-12">
-        <div class="text-center text-6xl mb-12 font-bold">Bronz Tagság</div>
-        <div class="flex md:flex-row flex-col gap-4 justify-center">
-            <div>
-                <div class="text-left text-xl mb-2"><span class="font-bold">Előnyök:</span></div>
-                <div>
-                    <ul class="list-disc pl-16 font-bold">
-                        <li>10% kedvezmény (minden szolgáltatásra)</li>
-                        <li>30%-kal kevesebb kaució</li>
-                        <li>Szállítási költség mentesség</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="flex flex-col md:flex-row gap-4">
-                <!-- Csomagok -->
-                <div class="border p-4 flex flex-col justify-between items-center gap-4 rounded-lg">
-                    <div>30 nap</div>
-                    <div>
-                        <button routerLink="/rent"
-                            class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
-                            AKTIVÁLÁS
-                        </button>
-                    </div>
-                    <div>
-                        1500 Ft
-                    </div>
-                </div>
-
-                <div class="border p-4 flex flex-col justify-between items-center gap-4 rounded-lg">
-                    <div>90 nap</div>
-                    <div>
-                        <button routerLink="/rent"
-                            class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
-                            AKTIVÁLÁS
-                        </button>
-                    </div>
-                    <div>
-                        4000 Ft
-                    </div>
-                </div>
-
-                <div class="border p-4 flex flex-col justify-between items-center gap-4 rounded-lg">
-                    <div>365 nap</div>
-                    <div>
-                        <button routerLink="/rent"
-                            class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
-                            AKTIVÁLÁS
-                        </button>
-                    </div>
-                    <div>
-                        16500 Ft
-                    </div>
-                </div>
-
-            </div>
-        </div>
+    <div class="text-center my-12" *ngIf="loading">
+        <div class="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-yellow-500 mx-auto"></div>
+        <h2 class="text-zinc-900 dark:text-white mt-4">Loading...</h2>
+        <p class="text-zinc-600 dark:text-zinc-400">
+            Your adventure is about to begin
+        </p>
     </div>
 
-    <div class="text-white mx-auto px-8 my-12 font-bold">
-        <div class="text-center text-3xl mb-12">Ezüst Tagság</div>
-        <div class="flex md:flex-row flex-col gap-4 justify-center">
-            <div>
-                <div class="text-left text-xl mb-2"><span class="font-bold">Előnyök:</span></div>
-                <div>
-                    <ul class="list-disc pl-16 font-bold">
-                        <li>15% kedvezmény (minden szolgáltatásra)</li>
-                        <li>50%-kal kevesebb kaució</li>
-                        <li>Szállítási költség mentesség</li>
-                    </ul>
+    <ng-template [ngIf]="!loading && subscription !== null">
+        <div class="mb-12 mt-12 mx-auto max-w-md">
+            <div class="text-white flex items-center gap-4 mb-4">
+                <div>Jelenlegi szintem:</div>
+                <div class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
+                    {{
+                    nameFormat(subscription?.product?.name)
+                    }}
                 </div>
+                <button routerLink="/2fa/setup"
+                    class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
+                    FEJLESZTÉS
+                </button>
             </div>
-            <div class="flex flex-col md:flex-row gap-4">
-                <!-- Csomagok -->
-                <div class="border p-4 flex flex-col justify-between items-center gap-4 rounded-lg">
-                    <div>30 nap</div>
-                    <div>
-                        <button routerLink="/rent"
-                            class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
-                            AKTIVÁLÁS
-                        </button>
-                    </div>
-                    <div>
-                        2500 Ft
-                    </div>
-                </div>
-
-                <div class="border p-4 flex flex-col justify-between items-center gap-4 rounded-lg">
-                    <div>90 nap</div>
-                    <div>
-                        <button routerLink="/rent"
-                            class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
-                            AKTIVÁLÁS
-                        </button>
-                    </div>
-                    <div>
-                        7000 Ft
-                    </div>
-                </div>
-
-                <div class="border p-4 flex flex-col justify-between items-center gap-4 rounded-lg">
-                    <div>365 nap</div>
-                    <div>
-                        <button routerLink="/rent"
-                            class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
-                            AKTIVÁLÁS
-                        </button>
-                    </div>
-                    <div>
-                        27500 Ft
-                    </div>
-                </div>
-
+            <div class="text-white">
+                <div class="font-bold">Szintem előnyei:</div>
+                <ul class="ml-8">
+                    <li *ngFor="let benefit of subscription?.product?.benefits">{{ benefit }}</li>
+                </ul>
             </div>
         </div>
-    </div>
+    </ng-template>
 
-    <div class="text-white mx-auto px-8 my-12 font-bold">
-        <div class="text-center text-3xl mb-12">Arany Tagság</div>
-        <div class="flex md:flex-row flex-col gap-4 justify-center">
-            <div>
-                <div class="text-left text-xl mb-2"><span class="font-bold">Előnyök:</span></div>
+    <ng-template [ngIf]="!loading && subscription == null">
+        <div class="mx-auto px-8 my-12" *ngFor="let plan of plans | keyvalue">
+            <div class="text-center text-4xl mb-12 font-bold">{{plan.value.name}}</div>
+            <div class="flex md:flex-col flex-col gap-4 justify-center items-center">
                 <div>
-                    <ul class="list-disc pl-16 font-bold">
-                        <li>20% kedvezmény (minden szolgáltatásra)</li>
-                        <li>Kaució kaució</li>
-                        <li>Szállítási költség mentesség</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="flex flex-col md:flex-row gap-4">
-                <!-- Csomagok -->
-                <div class="border p-4 flex flex-col justify-between items-center gap-4 rounded-lg">
-                    <div>30 nap</div>
+                    <div class="text-left text-xl mb-2"><span class="font-bold">Előnyök:</span></div>
                     <div>
-                        <button routerLink="/rent"
-                            class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
-                            AKTIVÁLÁS
-                        </button>
-                    </div>
-                    <div>
-                        4000 Ft
+                        <ul class="list-disc pl-16 font-bold">
+                            <li *ngFor="let benefit of plan.value.benefits">{{benefit}}</li>
+                        </ul>
                     </div>
                 </div>
-
-                <div class="border p-4 flex flex-col justify-between items-center gap-4 rounded-lg">
-                    <div>90 nap</div>
-                    <div>
-                        <button routerLink="/rent"
-                            class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
-                            AKTIVÁLÁS
-                        </button>
-                    </div>
-                    <div>
-                        11000 Ft
-                    </div>
-                </div>
-
-                <div class="border p-4 flex flex-col justify-between items-center gap-4 rounded-lg">
-                    <div>365 nap</div>
-                    <div>
-                        <button routerLink="/rent"
-                            class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
-                            AKTIVÁLÁS
-                        </button>
-                    </div>
-                    <div>
-                        48000 Ft
+                <div class="flex flex-col md:flex-row gap-4">
+                    <!-- Csomagok -->
+                    <div class="border p-4 flex flex-col justify-between items-center gap-4 rounded-lg"
+                        *ngFor="let subplan of plan.value.subplans; let i = index">
+                        <div>{{ subplan.days }} nap</div>
+                        <div>
+                            <button (click)="activateSubplan(plans, plan.value, subplan)"
+                                class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
+                                AKTIVÁLÁS
+                            </button>
+                        </div>
+                        <div>
+                            {{ subplan.price }} Ft
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
-    </div>
-
+    </ng-template>
 </div>
