@@ -13,10 +13,17 @@ import { TwoFactorLoginVerifyComponent } from './two-factor-login-verify/two-fac
 import { TwoFactorSetupComponent } from './two-factor-setup/two-factor-setup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+
+import { RentServicesComponent } from './rent-services/rent-services.component';
+import { RentDeliveryComponent } from './rent-delivery/rent-delivery.component';
+import { RentPaymentComponent } from './rent-payment/rent-payment.component';
+import { RentConfirmComponent } from './rent-confirm/rent-confirm.component';
+
 import { MyOrderComponent } from './my-order/my-order.component';
 import { EmailVerifyComponent } from './email-verify/email-verify.component';
 import { SuccessSubscriptionComponent } from './success-subscription/success-subscription.component';
 import { ConnectToClubComponent } from './connect-to-club/connect-to-club.component';
+
 
 const routes: Routes = [
   {
@@ -56,6 +63,18 @@ const routes: Routes = [
     path: "account", component: AccountComponent, canActivate: [authGuard]
   },
   {
+
+    path: "rent-services", component: RentServicesComponent
+  },
+  {
+    path: "rent-delivery", component: RentDeliveryComponent
+  },
+  {
+    path: "rent-payment", component: RentPaymentComponent
+  },
+  {
+    path: "rent-confirm", component: RentConfirmComponent
+
     path: "my-order", component: MyOrderComponent, canActivate: [authGuard]
   },
   {
@@ -63,13 +82,15 @@ const routes: Routes = [
   },
   {
     path: "success-subscription", component: SuccessSubscriptionComponent, canActivate: [authGuard]
+
   },
   {
     path: "", redirectTo: "home", pathMatch: "full"
   },
   {
     path: "**", component: NotFoundComponent
-  }
+  },
+
 ];
 
 @NgModule({
