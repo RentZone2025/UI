@@ -13,6 +13,12 @@ import { TwoFactorLoginVerifyComponent } from './two-factor-login-verify/two-fac
 import { TwoFactorSetupComponent } from './two-factor-setup/two-factor-setup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+
+import { RentServicesComponent } from './rent-services/rent-services.component';
+import { RentDeliveryComponent } from './rent-delivery/rent-delivery.component';
+import { RentPaymentComponent } from './rent-payment/rent-payment.component';
+import { RentConfirmComponent } from './rent-confirm/rent-confirm.component';
+
 import { MyOrderComponent } from './my-order/my-order.component';
 import { EmailVerifyComponent } from './email-verify/email-verify.component';
 import { SuccessSubscriptionComponent } from './success-subscription/success-subscription.component';
@@ -28,6 +34,7 @@ import { AdminSubscriptionInvoicesComponent } from './Admins/admin-subscription-
 import { AdminSubscriptionInvoiceComponent } from './Admins/admin-subscription-invoice/admin-subscription-invoice.component';
 import { AdminSubscriptionSubscriptionComponent } from './Admins/admin-subscription-subscription/admin-subscription-subscription.component';
 import { AdminSubscriptionSubscriptionsComponent } from './Admins/admin-subscription-subscriptions/admin-subscription-subscriptions.component';
+
 
 const routes: Routes = [
 
@@ -87,9 +94,21 @@ const routes: Routes = [
       {
         path: "success-subscription", component: SuccessSubscriptionComponent
       },
+      {
+        path: "rent-services", component: RentServicesComponent
+      },
+      {
+        path: "rent-delivery", component: RentDeliveryComponent
+      },
+      {
+        path: "rent-payment", component: RentPaymentComponent
+      },
+      {
+        path: "rent-confirm", component: RentConfirmComponent
+      },
     ]
   },
-
+  
   // ADMIN
   {
     path: "admin",
@@ -129,7 +148,8 @@ const routes: Routes = [
   },
   {
     path: "**", component: NotFoundComponent
-  }
+  },
+
 ];
 
 @NgModule({

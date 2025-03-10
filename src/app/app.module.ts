@@ -2,7 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
+
+
+import { provideHttpClient } from '@angular/common/http';
+
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors } from '@angular/common/http';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +25,12 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { TwoFactorLoginVerifyComponent } from './two-factor-login-verify/two-factor-login-verify.component';
 import { TwoFactorSetupComponent } from './two-factor-setup/two-factor-setup.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+
+import { RentServicesComponent } from './rent-services/rent-services.component';
+import { RentDeliveryComponent } from './rent-delivery/rent-delivery.component';
+import { RentPaymentComponent } from './rent-payment/rent-payment.component';
+import { RentConfirmComponent } from './rent-confirm/rent-confirm.component';
+
 import { MyOrderComponent } from './my-order/my-order.component';
 import { EmailVerifyComponent } from './email-verify/email-verify.component';
 import { DatePipe } from '@angular/common';
@@ -37,6 +48,7 @@ import { AdminSubscriptionInvoicesComponent } from './Admins/admin-subscription-
 import { AdminSubscriptionInvoiceComponent } from './Admins/admin-subscription-invoice/admin-subscription-invoice.component';
 import { AdminSubscriptionSubscriptionsComponent } from './Admins/admin-subscription-subscriptions/admin-subscription-subscriptions.component';
 import { AdminSubscriptionSubscriptionComponent } from './Admins/admin-subscription-subscription/admin-subscription-subscription.component';
+
 
 @NgModule({
   declarations: [
@@ -59,6 +71,14 @@ import { AdminSubscriptionSubscriptionComponent } from './Admins/admin-subscript
     EmailVerifyComponent,
     SuccessSubscriptionComponent,
     ConnectToClubComponent,
+    
+    // RENTS
+    RentServicesComponent,
+    RentDeliveryComponent,
+    RentPaymentComponent,
+    RentConfirmComponent,
+    
+    // ADMIN
     AdminViewComponent,
     UserViewComponent,
     AdminDashboardComponent,
@@ -75,7 +95,6 @@ import { AdminSubscriptionSubscriptionComponent } from './Admins/admin-subscript
     BrowserModule,
     AppRoutingModule,
     FormsModule
-    
   ],
   providers: [
     provideHttpClient(withInterceptors([authInterceptor])),
