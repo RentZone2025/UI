@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit, HostListener, ElementRef, SimpleChanges } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -10,6 +10,7 @@ export class NavComponent implements OnInit {
 
   dropdown = false;
   loggedIn = false;
+  role: any;
 
   constructor(
     private elRef: ElementRef,
@@ -18,6 +19,23 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     this.loggedIn = this.authService.isLoggedIn()
+    this.authService.token$.subscribe({
+      next: (token) => {
+        console.log("token változás: ",token)
+        this.loggedIn = token !== null
+      }
+    })
+    this.authService.role$.subscribe({
+      next: (role) => {
+        this.role = role
+      }
+    })
+  }
+
+  getProfileRoute(){
+    if(this.role === "admin") return "/admin/dashboard"
+    if(this.role === "user") return "/user/account"
+    return "/login"
   }
 
   toggleDropdown(): void {

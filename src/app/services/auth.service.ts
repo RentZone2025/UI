@@ -21,6 +21,12 @@ export class AuthService {
 
   private API_URL = environment.apiUrl;
 
+  private roleSubject = new BehaviorSubject<string | null>(this.getSavedRole());
+  role$ = this.roleSubject.asObservable();
+
+  private tokenSubject = new BehaviorSubject<string | null>(this.getToken());
+  token$ = this.tokenSubject.asObservable();
+
   constructor(
     private http: HttpClient,
     private router: Router
@@ -34,7 +40,7 @@ export class AuthService {
         if(response['2fa'] == true) this.router.navigate(['/2fa/verify']);
         else {
           this.setToken(response.access_token);
-          localStorage.setItem('ROLE', response.user.role);
+          this.setRole(response.user.role)
           console.log(response.user.role == 'admin');
           if(response.user.role == 'admin') this.router.navigate(['/admin/dashboard']);
           else this.router.navigate(['/user/account']);
@@ -49,8 +55,7 @@ export class AuthService {
       map((response: any) => response),
       tap(response => {
         localStorage.removeItem('temp_user_id');
-        localStorage.setItem('ROLE', response.user.role);
-        console.log(response.user.role == 'admin');
+        this.setRole(response.user.role)
         if(response.user.role == 'admin') this.router.navigate(['/admin/dashboard']);
         else this.router.navigate(['/user/account']);
       })
@@ -132,6 +137,7 @@ export class AuthService {
 
   setToken(token: string) {
     localStorage.setItem('token', token);
+    this.tokenSubject.next(token);
   }
 
   getToken(): string | null {
@@ -140,10 +146,21 @@ export class AuthService {
 
   removeToken() {
     localStorage.removeItem('token');
+    this.tokenSubject.next(null);
   }
 
-  getRole(): string | null {
-    return localStorage.getItem('ROLE') || null;
+  private getSavedRole(): string | null {
+    return localStorage.getItem('role');
+  }
+
+  setRole(role: string) {
+    localStorage.setItem('role', role);
+    this.roleSubject.next(role);
+  }
+
+  clearRole() {
+    localStorage.removeItem('role');
+    this.roleSubject.next(null);
   }
 
   getCurrentUser(){
@@ -151,7 +168,7 @@ export class AuthService {
       headers: {
         'Authorization': `Bearer ${this.getToken()}`
       }
-    });
+    })
   }
 
   isLoggedIn(): boolean {
@@ -166,6 +183,7 @@ export class AuthService {
     }).pipe(
       finalize(() => {
         this.removeToken();
+        this.clearRole();
         this.router.navigate(['/login']);
       })
     )

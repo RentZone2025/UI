@@ -197,4 +197,8 @@ export class AccountComponent implements OnInit {
     })
   }
 
+  logout(){
+    this.authService.logout().subscribe()
+  }
+
 }

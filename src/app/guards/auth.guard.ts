@@ -1,7 +1,8 @@
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { AuthService } from './../services/auth.service'; // Importáld az AuthService-t
+import { AuthService } from './../services/auth.service';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { map, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,22 +16,19 @@ export class AuthGuard implements CanActivate {
 
   canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    let url: string = state.url;
-    return this.checkUserLogin(next, url);
+    state: RouterStateSnapshot
+  ): Observable<boolean | UrlTree> {
+    return this.authService.role$.pipe(
+      take(1),
+      map(role => {
+        if (!this.authService.isLoggedIn()) {
+          return this.router.createUrlTree(['/login']); 
+        }
+        if (next.data['role'] && next.data['role'].indexOf(role) === -1) {
+          return this.router.createUrlTree(['/account']);
+        }
+        return true;
+      })
+    );
   }
-
-  checkUserLogin(route: ActivatedRouteSnapshot, url: string): boolean {
-    if (this.authService.isLoggedIn()) {
-      let userRole = this.authService.getRole();
-      if (route.data['role'] && route.data['role'].indexOf(userRole) === -1) {
-        //this.router.navigate(['/account']);
-        return false;
-      }
-      return true;
-    }
-    this.router.navigate(['/login']);
-    return false;
-  }
-
-};
+}
