@@ -42,7 +42,7 @@
                                 </span>
                             </div>
                         </td>
-                        <td class="text-white py-4">{{ invoice.frequency || '-' }}</td>
+                        <td class="text-white py-4">{{ frequencyFormat(invoice.lines.data[0].plan) || '-' }}</td>
                         <td class="text-white py-4">{{ invoice.number }}</td>
                         <td class="text-white py-4">{{ invoice.customer_email }}</td>
                         <td class="text-white py-4">{{ invoice.due_date ? (invoice.due_date * 1000 | date: 'MMM dd') :

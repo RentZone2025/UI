@@ -34,7 +34,7 @@
                     <tr *ngFor="let subscription of subscriptions.data"
                         class="border-b last:border-0 border-white hover:bg-[#8f8a8a] cursor-pointer"
                         (click)="selectSubscription(subscription)">
-                        <td class="text-white flex flex-col items-center gap-2 py-4 px-2 text-xs">
+                        <td class="text-white flex flex-col justify-center gap-2 py-4 px-2 text-xs">
                             {{
                             subscription.customer_details.email
                             }}

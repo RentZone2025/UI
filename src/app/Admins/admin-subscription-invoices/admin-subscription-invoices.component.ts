@@ -25,8 +25,20 @@ export class AdminSubscriptionInvoicesComponent implements OnInit {
     });
   }
 
+  capitalize(str: string, lower = false){
+    return (lower ? str.toLowerCase() : str).replace(/(?:^|\s|["'([{])+\S/g, match => match.toUpperCase());
+  }
+
   priceFormat(price: any, currency: string) {
       return price + ' ' + currency.toUpperCase();
+  }
+
+  frequencyFormat(plan: any){
+    if(plan.interval_count > 1){
+      return plan.interval_count + " " + plan.interval
+    } else {
+      return this.capitalize(plan.interval) + "ly"
+    }
   }
 
   selectInvoice(invoice: any) {
