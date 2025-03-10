@@ -1,0 +1,61 @@
+<div class="md:max-w-3xl rounded-xl mx-auto mt-2 bg-[#595656] px-8 py-4">
+
+    <div class="flex items-center justify-center" *ngIf="loading">
+        <div class="text-center my-12 w-md mx-auto">
+            <div class="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-yellow-500 mx-auto"></div>
+            <h2 class="text-zinc-900 dark:text-white mt-4">Loading...</h2>
+            <p class="text-zinc-600 dark:text-zinc-400">
+                Your adventure is about to begin
+            </p>
+        </div>
+    </div>
+
+    <div *ngIf="!loading">
+
+        <div class="text-white text-lg font-bold mb-4 text-center">
+            Feliratkozások
+        </div>
+
+        <div class="flex justify-start gap-8 items-center border-b border-[#595656] py-2">
+
+            <table class="w-full text-sm text-left">
+                <thead>
+                    <tr class="border-b last:border-0 border-white">
+                        <th class="text-white py-4 px-2">Customer</th>
+                        <th class="text-white py-4">Status</th>
+                        <th class="text-white py-4">Billing</th>
+                        <th class="text-white py-4">Product</th>
+                        <th class="text-white py-4">Created</th>
+                        <th class="text-white py-4">avg. monthly total</th>
+                        <th class="text-white py-4">avg. yearly total</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white text-xs">
+                    <tr *ngFor="let subscription of subscriptions.data"
+                        class="border-b last:border-0 border-white hover:bg-[#8f8a8a] cursor-pointer"
+                        (click)="selectSubscription(subscription)">
+                        <td class="text-white flex flex-col justify-center gap-2 py-4 px-2 text-xs">
+                            {{
+                            subscription.customer_details.email
+                            }}
+                        </td>
+                        <td class="text-white py-4">
+                            <span
+                                class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">
+                                {{ subscription.status }}
+                            </span>
+                        </td>
+                        <td class="text-white py-4">billing</td>
+                        <td class="text-white py-4">{{ subscription.plan.product_details.name }}</td>
+                        <td class="text-white py-4">{{ subscription.created * 1000 | date: 'MMM dd' }}</td>
+                        <td class="text-white py-4">{{ avg_monthly(subscription.plan) }}</td>
+                        <td class="text-white py-4">{{ avg_yearly(subscription.plan) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

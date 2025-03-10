@@ -79,16 +79,14 @@
                     <a routerLink="">Kapcsolat</a>
                 </div>
                 <div class="p-2">
-                    <a routerLink="/club-card">Tagság</a>
+                    <a routerLink="/user/club-card">Tagság</a>
                 </div>
                 <div class="p-2">
-                    <a routerLink="/login" class="flex items-center justify-center mt-0.5 ml-2" *ngIf="!loggedIn">
-                        <span class="material-symbols-outlined">
+                    <a [routerLink]="getProfileRoute()" class="flex items-center justify-center mt-0.5 ml-2" >
+                        <span class="material-symbols-outlined" *ngIf="!loggedIn">
                             person_add
                         </span>
-                    </a>
-                    <a routerLink="/account" class="flex items-center justify-center mt-0.5 ml-2" *ngIf="loggedIn">
-                        <span class="material-symbols-outlined">
+                        <span class="material-symbols-outlined" *ngIf="loggedIn">
                             person
                         </span>
                     </a>

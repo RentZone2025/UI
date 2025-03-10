@@ -1,0 +1,45 @@
+<div>
+    <div class="flex items-center">
+
+        <div class="flex items-center justify-center cursor-pointer p-2 relative text-white" *ngFor="let link of links | keyvalue"
+            (click)="navigate(link.value)">
+            <div class="flex items-center gap-2">
+                <div>
+                    {{
+                    link.key
+                    }}
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-center cursor-pointer p-2 relative text-white" *ngFor="let dropdown of dropdowns | keyvalue"
+            (click)="toggleDropdown(dropdown.key)">
+            <div class="flex items-center gap-1">
+                <div>
+                    {{
+                    dropdown.value.name
+                    }}
+                </div>
+                <div class="flex items-center justify-center mt-1">
+                    <span class="material-symbols-outlined" *ngIf="!dropdowns[dropdown.key].open">arrow_drop_down</span>
+                    <span class="material-symbols-outlined" *ngIf="dropdowns[dropdown.key].open">arrow_drop_up</span>
+                </div>
+            </div>
+            <div
+            class="absolute top-10 left-2 bg-[#a7a2a2] rounded-lg p-3 min-w-24"
+            [ngClass]="{
+                'hidden': !dropdown.value.open,
+                'block': dropdown.value.open
+            }"
+            >
+                <div class="cursor-pointer my-2" *ngFor="let subitem of dropdown.value.items | keyvalue" (click)="navigate(subitem.value.link)">
+
+                    {{
+                    subitem.value.name
+                    }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

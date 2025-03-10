@@ -1,0 +1,121 @@
+<div class="md:max-w-3xl rounded-xl mx-auto mt-2 bg-[#595656] px-8 py-4">
+
+    <div class="flex items-center justify-center" *ngIf="loading">
+        <div class="text-center my-12 w-md mx-auto">
+            <div class="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-yellow-500 mx-auto"></div>
+            <h2 class="text-zinc-900 dark:text-white mt-4">Loading...</h2>
+            <p class="text-zinc-600 dark:text-zinc-400">
+                Your adventure is about to begin
+            </p>
+        </div>
+    </div>
+
+    <div class="py-2" *ngIf="!loading">
+
+        <div class="flex justify-start gap-2 py-2">
+            <div class="text-white font-bold text-xl">
+                {{
+                invoice.number
+                }}
+            </div>
+            <div class="text-white font-basic">
+                <span
+                    class="bg-green-100S text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">
+                    {{ invoice.status }}
+                </span>
+            </div>
+        </div>
+
+        <div class="flex justify-start gap-2 py-2">
+            <div class="relative overflow-hidden flex items-center gap-2 py-1 w-4/6">
+                <input type="text" class="w-full bg-[#8f8a8a] text-white py-1 pl-2 pr-10"
+                    value="{{ invoice.hosted_invoice_url }}" disabled>
+                <button class="absolute right-2 top-2 bg-[#8f8a8a] text-white px-0 py-0 rounded-md"
+                    (click)="copyToClipboard(invoice.hosted_invoice_url)">
+                    <span class="material-symbols-outlined text-base font-bold text-indigo-700">
+                        content_paste
+                    </span>
+                </button>
+            </div>
+            <div class="flex items-center gap-2">
+                <button 
+                class="bg-[#8f8a8a] text-white px-3 py-1 rounded-md w-full text-sm flex items-center justify-center gap-2"
+                (click)="downloadInvoice(invoice.invoice_pdf)"
+                >
+                    <span class="material-symbols-outlined font-bold text-white">
+                        download
+                    </span>
+                    <span>
+                        Download PDF
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <div class="text-white pt-4 pb-2 mb-2 mt-6 border-b border-white text-xl flex justify-between items-center">
+            Details
+        </div>
+
+        <div class="text-white pt-2 pb-2 mb-0 text-base font-bold">
+            ID
+        </div>
+
+        <div class="relative overflow-hidden flex items-center gap-2 py-1">
+            <input type="text" class=" bg-[#8f8a8a] text-white py-1 pl-8 pr-2"
+                value="{{ invoice.id }}" disabled>
+            <button class="absolute left-2 top-2 bg-[#8f8a8a] text-white px-0 py-0 rounded-md"
+                (click)="copyToClipboard(invoice.id)">
+                <span class="material-symbols-outlined text-base font-bold text-indigo-700">
+                    content_paste
+                </span>
+            </button>
+        </div>
+
+        <div class="text-white pt-2 pb-2 mb-0 text-base font-bold">
+            Created
+        </div>
+
+        <div class="flex justify-start items-center gap-2 py-1">
+            <div class="flex items-center justify-center">
+                <span class="material-symbols-outlined text-white text-lg">
+                    schedule
+                </span>
+            </div>
+            <div class="text-white py-1">
+                {{ invoice.created * 1000 | date: 'MMM dd, HH:mm' }}
+            </div>
+        </div>
+
+        <div class="text-white pt-2 pb-2 mb-0 text-base font-bold">
+            Finalized
+        </div>
+
+        <div class="flex justify-start items-center gap-2 py-1">
+            <div class="flex items-center justify-center">
+                <span class="material-symbols-outlined text-white text-lg">
+                    schedule
+                </span>
+            </div>
+            <div class="text-white py-1">
+                {{ invoice.status_transitions.finalized_at * 1000 | date: 'MMM dd, HH:mm' }}
+            </div>
+        </div>
+
+        <div class="text-white pt-2 pb-2 mb-2 text-base font-bold">
+            Connection Subscription
+        </div>
+
+        <div class="text-white font-basic text-sm">
+            {{
+            invoice.lines.data[0].plan.product_details.name
+            }}
+            <span
+            *ngIf="invoice.lines.data[0].subscription_details.canceled_at"
+            class="bg-gray-100S text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-gray-900 dark:text-gray-300">
+                Canceled
+            </span>
+        </div>
+
+    </div>
+
+</div>

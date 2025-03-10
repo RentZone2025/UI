@@ -10,7 +10,17 @@
   </div>
 
 </div>
-<div class="md:max-w-3xl rounded-xl mx-auto mt-2 bg-[#595656] px-8 py-4">
+<div class="md:max-w-3xl rounded-xl mx-auto mt-2 bg-[#595656] px-8 py-4 relative">
+
+  <div class="absolute top-1 left-1">
+    <button (click)="logout()"
+      class="bg-[#EEEEEE] opacity-60 text-red-800 rounded-full px-1.5 py-1.5 font-extrabold w-10 h-10 flex items-center justify-center">
+      <span class="material-symbols-outlined">
+        power_settings_new
+        </span>
+    </button>
+  </div>
+
   <div class="text-white mx-auto mb-12 text-center text-xl">
     Személyes adatok
   </div>

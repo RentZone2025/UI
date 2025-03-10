@@ -1,0 +1,148 @@
+<div class="md:max-w-3xl rounded-xl mx-auto mt-2 bg-[#595656] px-8 py-4">
+
+    <div class="flex items-center justify-center" *ngIf="loading">
+        <div class="text-center my-12 w-md mx-auto">
+            <div class="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-yellow-500 mx-auto"></div>
+            <h2 class="text-zinc-900 dark:text-white mt-4">Loading...</h2>
+            <p class="text-zinc-600 dark:text-zinc-400">
+                Your adventure is about to begin
+            </p>
+        </div>
+    </div>
+
+    <div *ngIf="!loading">
+
+        <div class="flex justify-start gap-8 items-center py-2">
+            <div class="w-16 h-16 bg-white flex items-center justify-center">
+                <span class="material-symbols-outlined text-green-500">
+                    deployed_code
+                </span>
+            </div>
+            <div>
+                <div class="text-white font-bold text-lg">
+                    {{ plan.name }}
+                </div>
+                <div class="text-white font-basic">
+                    {{ priceFormat(plan.prices.data) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="text-white pt-4 pb-2 mb-2 border-b border-white text-xl flex justify-between items-center">
+            Pricing
+            <span class="material-symbols-outlined">
+                add
+            </span>
+        </div>
+
+        <div>
+            <table class="w-full">
+                <thead class="border-b border-white">
+                    <tr class="text-left">
+                        <th class="text-white py-4 px-2">
+                            Price
+                        </th>
+                        <th class="text-white py-4 px-2">
+                            Description
+                        </th>
+                        <th class="text-white py-4 px-2">
+                            Subscriptions
+                        </th>
+                        <th class="text-white py-4 px-2">
+                            Created
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr (click)="selectPrice(price)"
+                        class="border-b last:border-0 border-white hover:bg-[#8f8a8a] cursor-pointer"
+                        *ngFor="let price of plan.prices.data">
+                        <td class="text-white py-4 px-2">
+                            {{ price.currency.toUpperCase() }} {{ price.unit_amount / 100 | number: '1.2-2' }}
+                            <br>
+                            <span class="text-gray-200 font-basic text-sm">
+                                {{
+                                price.recurring.interval_count === 1
+                                ? 'Per ' + price.recurring.interval
+                                : 'Every ' + price.recurring.interval_count + " " + price.recurring.interval + 's'
+                                }}
+                            </span>
+                        </td>
+                        <td class="text-white py-4 px-2">
+                            {{
+                            price.nickname
+                            }}
+                        </td>
+                        <td class="text-white py-4 px-2">
+                            {{
+                            price.subscriptions_count
+                            }}
+                        </td>
+                        <td class="text-white py-4 px-2">
+                            {{
+                            price.created * 1000 | date: 'MMM dd'
+                            }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-white pt-4 pb-2 mb-2 mt-6 border-b border-white text-xl flex justify-between items-center">
+            Details
+            <span class="material-symbols-outlined">
+                edit
+            </span>
+        </div>
+
+        <div class="text-white pt-4 pb-2 mb-2 text-base font-bold">
+            Description
+        </div>
+
+        <div class="text-white font-basic text-sm">
+            {{
+            plan.description
+            }}
+        </div>
+
+        <div class="text-white pt-4 pb-2 mb-2 text-base font-bold">
+            Created
+        </div>
+
+        <div class="text-white font-basic text-sm">
+            {{
+            plan.created * 1000 | date: 'MMM dd'
+            }}
+        </div>
+
+        <div class="text-white pt-4 pb-2 mb-2 text-base font-bold">
+            Updated
+        </div>
+
+        <div class="text-white font-basic text-sm">
+            {{
+            plan.updated * 1000 | date: 'MMM dd'
+            }}
+        </div>
+
+        <div class="text-white pt-4 pb-2 mb-2 mt-6 border-b border-white text-xl flex justify-between items-center">
+            Metadata
+            <span class="material-symbols-outlined">
+                edit
+            </span>
+        </div>
+
+        <div>
+            <div class="text-white font-basic text-sm flex gap-4" *ngFor="let metadata of plan.metadata | keyvalue">
+                <div class="text-white font-bold">
+                    {{ metadata.key }}
+                </div>
+                <div>
+                    {{ metadata.value }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
