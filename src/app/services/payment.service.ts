@@ -36,7 +36,7 @@ export class PaymentService {
           return response;
         }),
         tap((response: any) => {
-          //window.location.href = response.url;
+          window.location.href = response.url;
         })
       );
   }
