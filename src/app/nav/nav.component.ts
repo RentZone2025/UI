@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener, ElementRef, SimpleChanges } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -11,7 +12,7 @@ export class NavComponent implements OnInit {
   dropdown = false;
   loggedIn = false;
   role: any;
-
+  
   constructor(
     private elRef: ElementRef,
     private authService: AuthService

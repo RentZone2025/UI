@@ -1,11 +1,11 @@
 <div
   class="md:max-w-3xl text-xl rounded-xl mx-auto mt-0 mb-4 px-8 py-4 flex gap-8 items-center justify-center text-white">
 
-  <div routerLink="/account" class="cursor-pointer">
+  <div routerLink="/user/account" class="cursor-pointer">
     Felhasználói adatok
   </div>
 
-  <div routerLink="/my-order" class="cursor-pointer">
+  <div routerLink="/user/my-order" class="cursor-pointer">
     Rendeléseim
   </div>
 
@@ -170,7 +170,7 @@
   </div>
 
   <div class="flex justify-center mb-12">
-    <button *ngIf="two_factor_auth_enabled == false" routerLink="/2fa/setup"
+    <button *ngIf="two_factor_auth_enabled == false" routerLink="/user/2fa/setup"
       class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
       AKTIVÁLÁS
     </button>
@@ -190,7 +190,7 @@
         nameFormat(subscription?.product?.name) 
         }}
       </div>
-      <button routerLink="/2fa/setup"
+      <button routerLink="/user/club-card"
         class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold">
         FEJLESZTÉS
       </button>

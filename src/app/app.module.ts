@@ -2,12 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
-
-
-import { provideHttpClient } from '@angular/common/http';
-
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors } from '@angular/common/http';
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,7 +43,6 @@ import { AdminSubscriptionInvoicesComponent } from './Admins/admin-subscription-
 import { AdminSubscriptionInvoiceComponent } from './Admins/admin-subscription-invoice/admin-subscription-invoice.component';
 import { AdminSubscriptionSubscriptionsComponent } from './Admins/admin-subscription-subscriptions/admin-subscription-subscriptions.component';
 import { AdminSubscriptionSubscriptionComponent } from './Admins/admin-subscription-subscription/admin-subscription-subscription.component';
-
 
 @NgModule({
   declarations: [
