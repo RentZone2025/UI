@@ -55,6 +55,7 @@ export class AuthService {
       map((response: any) => response),
       tap(response => {
         localStorage.removeItem('temp_user_id');
+        this.setToken(response.access_token);
         this.setRole(response.user.role)
         if(response.user.role == 'admin') this.router.navigate(['/admin/dashboard']);
         else this.router.navigate(['/user/account']);

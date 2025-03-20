@@ -44,7 +44,6 @@ import { AdminSubscriptionInvoiceComponent } from './Admins/admin-subscription-i
 import { AdminSubscriptionSubscriptionsComponent } from './Admins/admin-subscription-subscriptions/admin-subscription-subscriptions.component';
 import { AdminSubscriptionSubscriptionComponent } from './Admins/admin-subscription-subscription/admin-subscription-subscription.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

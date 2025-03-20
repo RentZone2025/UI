@@ -21,11 +21,17 @@ export class AuthGuard implements CanActivate {
     return this.authService.role$.pipe(
       take(1),
       map(role => {
+        console.log(!this.authService.isLoggedIn())
+        console.log(next.data['role'] && next.data['role'].indexOf(role) === -1)
         if (!this.authService.isLoggedIn()) {
           return this.router.createUrlTree(['/login']); 
         }
         if (next.data['role'] && next.data['role'].indexOf(role) === -1) {
-          return this.router.createUrlTree(['/account']);
+          if(role === 'user') {
+          return this.router.createUrlTree(['/user/account']);
+          } else {
+            return this.router.createUrlTree(['/admin/dashboard']);
+          }
         }
         return true;
       })
