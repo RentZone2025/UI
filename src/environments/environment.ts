@@ -1,4 +1,4 @@
 export const environment={
     production: false,
-    apiUrl: 'https://api.rentzone.hu/api'
+    apiUrl: 'http://localhost:8000/api'
 }

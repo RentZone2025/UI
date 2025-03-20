@@ -53,7 +53,7 @@ export class TwoFactorSetupComponent implements OnInit {
     this.authService.twofactorsetupverify(this.two_factor_code).subscribe({
       next: (response: any) => {
         console.log(response);
-        this.router.navigate(['/account']);
+        this.router.navigate(['/user/account']);
       },
       error: (error: any) => {
         console.log(error);
