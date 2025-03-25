@@ -1,0 +1,42 @@
+.box {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+}
+
+.bronze {
+    background-color: #CD7F32;
+    span {
+        color: #8B4513;
+    }
+}
+
+.text-bronze {
+    color: #8B4513;
+}
+
+.silver {
+    background-color: #B1B1B1;
+    span {
+        color: #808080;
+    }
+}
+
+.text-silver {
+    color: #808080;
+}
+
+
+.gold {
+    background-color: #FFD700;
+    span {
+        color: #FF9900;
+    }
+}
+
+.text-gold {
+    color: #FF9900;
+}

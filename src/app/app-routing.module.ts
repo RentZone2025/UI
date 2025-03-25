@@ -34,6 +34,7 @@ import { AdminSubscriptionInvoicesComponent } from './Admins/admin-subscription-
 import { AdminSubscriptionInvoiceComponent } from './Admins/admin-subscription-invoice/admin-subscription-invoice.component';
 import { AdminSubscriptionSubscriptionComponent } from './Admins/admin-subscription-subscription/admin-subscription-subscription.component';
 import { AdminSubscriptionSubscriptionsComponent } from './Admins/admin-subscription-subscriptions/admin-subscription-subscriptions.component';
+import { MyMembershipComponent } from './my-membership/my-membership.component';
 
 
 const routes: Routes = [
@@ -87,6 +88,9 @@ const routes: Routes = [
       },
       {
         path: "my-order", component: MyOrderComponent
+      },
+      {
+        path: "my-membership", component: MyMembershipComponent
       },
       {
         path: "connect-to-club", component: ConnectToClubComponent
