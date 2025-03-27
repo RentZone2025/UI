@@ -39,10 +39,14 @@ export class RegisterComponent {
         },
         error: (error: any) => {
           console.log(error);
-          this.message.text = error.error.message;
+          this.message.text = error.error.errors;
           this.message.type = 'error';
         }
       });
+  }
+
+  isTextAnObject(): boolean {
+    return typeof this.message.text === 'object';
   }
 
 }
