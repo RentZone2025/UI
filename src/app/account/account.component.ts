@@ -197,6 +197,29 @@ export class AccountComponent implements OnInit {
     })
   }
 
+  removeProfile(){
+    console.log(this.user)
+    this.accountService.removeProfile(this.user).subscribe({
+      next: (response: any) => {
+        this.authService.logout().subscribe()
+      },
+      error: (error: any) => {
+        console.log(error);
+      }
+    })
+  }
+
+  suspendProfile(){
+    this.accountService.suspendProfile().subscribe({
+      next: (response: any) => {
+        this.authService.logout().subscribe()
+      },
+      error: (error: any) => {
+        console.log(error);
+      }
+    })
+  }
+
   logout(){
     this.authService.logout().subscribe()
   }

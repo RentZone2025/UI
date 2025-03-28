@@ -51,4 +51,21 @@ export class AccountService {
       }
     })
   }
+
+  removeProfile(user: any){
+    return this.http.delete(`${this.API_URL}/users/${user.id}`, {
+      headers: {
+        'Authorization': `Bearer ${getToken()}`
+      }
+    })
+  }
+
+  suspendProfile(){
+    return this.http.post(`${this.API_URL}/users/suspend`, {}, {
+      headers: {
+        'Authorization': `Bearer ${getToken()}`
+      }
+    })
+  }
+
 }
