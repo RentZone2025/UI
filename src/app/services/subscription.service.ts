@@ -68,6 +68,20 @@ export class SubscriptionService {
       );
   }
 
+  cancelSubscription() {
+    return this.http
+      .post(`${this.API_URL}/subscriptions/cancel`, {}, {
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      })
+      .pipe(
+        map((response: any) => {
+          return response;
+        })
+      );
+  }
+
   setPlanData(plans: any, plan: any, subplan: any) {
     localStorage.setItem('plan_data', JSON.stringify({ plans, plan, subplan }));
   }

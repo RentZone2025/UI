@@ -1,36 +1,26 @@
-<div
-  class="md:max-w-3xl rounded-xl mx-auto mt-2 bg-[#595656] px-8 py-4 relative"
->
+<div class="md:max-w-3xl rounded-xl mx-auto mt-2 bg-[#595656] px-8 py-4 relative">
   <div class="text-white mx-auto mb-12 text-center text-xl">Tagságom</div>
 
   <div class="flex gap-4">
     <ng-template [ngIf]="!loading && subscription !== null">
-      <div
-        class="flex items-center justify-between gap-2 bg-white p-3 rounded-xl w-38"
-      >
-        <div class="box"
-        [ngClass]="{
+      <div class="flex items-center justify-between gap-2 bg-white p-3 rounded-xl w-38">
+        <div class="box" [ngClass]="{
           'bronze': subscription?.product?.metadata.type == 'bronze',
           'silver': subscription?.product?.metadata.type == 'silver',
           'gold': subscription?.product?.metadata.type == 'gold'
-          }"
-        >
+          }">
           <span class="material-symbols-outlined"> crown </span>
         </div>
-        <div class="text-lg"
-        [ngClass]="{
+        <div class="text-lg" [ngClass]="{
           'text-bronze': subscription?.product?.metadata.type == 'bronze',
           'text-silver': subscription?.product?.metadata.type == 'silver',
           'text-gold': subscription?.product?.metadata.type == 'gold'
-          }"
-        >{{ subscription?.product?.name }}</div>
+          }">{{ subscription?.product?.name }}</div>
       </div>
     </ng-template>
 
     <ng-template [ngIf]="!loading && subscription == null">
-      <div
-        class="flex items-center justify-between gap-2 bg-white p-3 rounded-xl w-38"
-      >
+      <div class="flex items-center justify-between gap-2 bg-white p-3 rounded-xl w-38">
         <div class="box no_subscription">
           <span class="material-symbols-outlined"> error </span>
         </div>
@@ -60,16 +50,21 @@
       [ngClass]="{
         'transition-[background-size,color] duration-500 hover:bg-[0_2px,100%_2px] hover:text-[#84B067]':
           !loading && subscription != null
-      }"
-      [disabled]="!loading && subscription == null"
-    >
+      }" [disabled]="!loading && subscription == null" (click)="cancelSubscription()">
       Lemondás
     </button>
 
-    <button
-      class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold bg-[position:100%_100%,0_100%] bg-no-repeat text-[#0A6222] transition-[background-size,color] duration-500 hover:bg-[0_2px,100%_2px] hover:text-[#84B067]"
-    >
+    <button *ngIf="!loading && subscription != null"
+      (click)="upgradeSubscription()"
+      class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold bg-[position:100%_100%,0_100%] bg-no-repeat text-[#0A6222] transition-[background-size,color] duration-500 hover:bg-[0_2px,100%_2px] hover:text-[#84B067]">
       Fejlesztés
     </button>
+
+    <button *ngIf="!loading && subscription == null"
+      routerLink="/user/club-card"
+      class="bg-[#EEEEEE] opacity-60 text-[#0A6222] rounded-full px-4 py-1.5 font-extrabold bg-[position:100%_100%,0_100%] bg-no-repeat text-[#0A6222] transition-[background-size,color] duration-500 hover:bg-[0_2px,100%_2px] hover:text-[#84B067]">
+      Előfizetés
+    </button>
+
   </div>
 </div>
