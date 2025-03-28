@@ -198,7 +198,12 @@ export class AccountComponent implements OnInit {
   }
 
   removeProfile(){
-    console.log(this.user)
+    
+    // dialog
+    if (!confirm('Biztosan törölni szeretnéd a profilod?')) {
+      return;
+    }
+
     this.accountService.removeProfile(this.user).subscribe({
       next: (response: any) => {
         this.authService.logout().subscribe()
@@ -210,6 +215,12 @@ export class AccountComponent implements OnInit {
   }
 
   suspendProfile(){
+
+    // dialog
+    if (!confirm('Biztosan felfüggeszted a profilod?')) {
+      return;
+    }
+
     this.accountService.suspendProfile().subscribe({
       next: (response: any) => {
         this.authService.logout().subscribe()
